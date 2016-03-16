@@ -112,11 +112,11 @@ require("menu_filter.php");
 		getMobileDetails($rezult->proprietar, $tip, $id, '');	 
 	?>
 	<div id="main-container">
-		<h1>Detalii Cerere</h1>
+		<h3>Detalii Cerere</h3>
 	</div>
 	<!--=================================================Comentarii=======================================================----------------->
 	
-	<?php echo JText::_('SAUTO_MESAJ_CERERE'); ?>
+	
 	<div class="comments_list">
 	
 	<?php
@@ -168,7 +168,7 @@ require("menu_filter.php");
 		<?php 
 				//preluam ofertele facute		
 				$img_path2 = JURI::base()."components/com_sauto/assets/users/";
-	$query = "SELECT `r`.`firma`, `r`.`id`, `r`.`mesaj`, `r`.`status_raspuns`, `r`.`data_adaugarii`, `r`.`pret_oferit`, `p`.`companie`, `p`.`calificative`, 
+	    $query = "SELECT `r`.`firma`, `r`.`id`, `r`.`mesaj`, `r`.`status_raspuns`, `r`.`data_adaugarii`, `r`.`pret_oferit`, `p`.`companie`, `p`.`calificative`, 
 		`p`.`poza`, `p`.`telefon`, `l`.`localitate`, `m`.`m_scurt`, `ab`.`abonament`, `u`.`block`, `p`.`reprezentant`, `p`.`f_principal` 
 		FROM #__sa_raspunsuri as `r` 
 		JOIN #__sa_profiles as `p` 
