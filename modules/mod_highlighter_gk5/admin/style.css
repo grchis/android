@@ -1,0 +1,219 @@
+/*** Admin CSS file 
+* @package Higlighter GK5 
+* @Copyright (C) 2009-2013 Gavick.com 
+* @ All rights reserved 
+* @ Joomla! is Free Software 
+* @ Released under GNU/GPL License : http://www.gnu.org/copyleft/gpl.html 
+* @version $Revision: GK5 1.0 $ **/ 
+
+::-moz-selection {
+background: transparent;
+}
+
+::selection {
+	background: transparent;
+}
+#gk_about_us {
+	max-width: 750px;
+	margin: 0 auto;
+}
+#moduleOptions > .accordion-group:first-child > .collapse.in {
+	min-height: 300px;
+}
+#moduleOptions .accordion-group {
+	max-width: 1050px;
+	margin: 0 auto 2px;
+}
+#moduleOptions .minicolors-theme-bootstrap .minicolors-input {
+	font-family: Arial, Verdana, Serif;
+	width: 112px;
+}
+#jform_params_data_source_chzn {
+	display: none;
+}
+#jform_params_data_source {
+	display: block!important;
+}
+#moduleOptions .control-label {
+	max-width: 165px;
+}
+#moduleOptions .input-small,
+#jform_params_news_since {
+	width: 135px;
+}
+.gkFormLine {
+	clear: both;
+	display: block;
+	height: 21px;
+	margin: 0 -10px!important;
+}
+
+.gkFormLine.hasText {
+	background: transparent url('interface.png') no-repeat 5px -229px;
+	border-top: 10px solid #fff;
+	border-bottom: 5px solid #fff;
+	color: #444;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 16px;
+	padding-left: 28px;
+	cursor: pointer;
+}
+
+.gkFormLine.hasText.open {
+	background-position: 5px -287px
+}
+
+.gkFormLine.hasText span {
+	padding: 3px;
+	background: #fff;
+} 
+
+/* Config manager */
+
+#jform_params_config_manager-lbl {
+	display: none;
+}
+#config_manager_form {
+	clear: both;
+	color: #555;
+	margin: 16px 0;
+	background: #f9f9f9;
+	padding: 10px 20px;
+	overflow: hidden;
+}
+#config_manager_form input[type="text"] {
+	text-align: right;
+}
+#config_manager_form label {
+	margin: 11px 0 0 0;
+} 
+#config_manager_delete,
+#config_manager_load {
+	padding: 3px 12px 2px;
+	margin-top: -4px;
+}
+#config_manager_delete i,
+#config_manager_load i {
+	margin-right: 4px;
+}
+#config_manager_save_filename {
+	min-width: 175px;
+}
+#config_manager_form {
+	background:#f9f9f9;
+	clear:both;
+	color:#555;
+	margin:16px 0;
+	overflow:hidden;
+	padding:10px 20px;
+	position: absolute;
+	top: 0;
+	right: 20px;
+	max-width: 510px;
+}
+#config_manager_form label {
+	margin: 11px 0 0
+}
+#config_manager_form span {
+	font-size: 12px;
+}
+
+/* Social media */
+#gk-social {
+	margin-top: 10px;
+}
+#gk-social > iframe {
+	margin-right: 10px;
+	width: auto!important;
+	display: inline-block;
+	max-width: 130px;
+}
+#gk-social > span:first-child {
+	display: inline-block;
+	font-size: 12px;
+	line-height: 1.6;
+	margin-right: 20px;
+	vertical-align: top;	
+}
+#moduleOptions .input-small.input-pixels,
+#moduleOptions .input-small.input-ms {
+	width: 110px;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+#moduleOptions .add-on {
+	margin-left: -1px;
+}
+
+@media (max-width: 1050px) { 
+	#config_manager_form,
+	#simple_crop {
+		position: relative;
+		top:  auto;
+		right: auto;
+		max-width: 100%;
+	}
+	#moduleOptions > .accordion-group > .collapse.in  {
+		min-height: auto;
+	}
+}
+
+/* Joomla! 3.2.x styles */
+.j32 ul#myTabTabs {
+	width: 20%;
+	float: left;
+	border-bottom: 0;
+	border-right: 1px solid #fafafa;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.j32 #jform_note { max-width: 220px; }
+.j32 #jform_params_cacheTime {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.j32 .input-prepend .add-on { margin-left: -1px; margin-right: 0; }
+.j32 ul#myTabTabs > li {
+	width: 90%;
+	margin: 2px 0;
+}
+.j32 ul#myTabTabs > li > a {
+	color: #666;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.j32 ul#myTabTabs > li.active > a {
+	color: #fff;
+	background: #59B1F6;
+	border-color: #2587d3;
+}
+.j32 div#myTabContent {
+	float: right;
+	width: 80%;
+}
+.j32 div#myTabContent > div { margin-left: 35px }
+.j32 #general .span3 { width: 100% }
+.j32 #general .span9 { display: none }
+.j32 #jform_menuselect {
+	clear: both;
+	width: 100%;
+	margin: 0;
+}
+.j32 #jform_params_data_source { display: block!important; }
+.j32 #jform_params_data_source_chzn { display: none!important; }
+.j32 #config_manager_form {
+	position: relative;
+}
+.j32 > .form-inline-header > .control-group {
+	width: 100%;
+}
+.j32 > .form-inline-header > .control-group > .control-label { width: 10%; float: left; padding: 0!important; line-height: 32px }
+.j32 > .form-inline-header > .control-group > .controls { width: 90%; float: left; padding: 0!important }
+.j32 > .form-inline-header > .control-group > .controls > input { max-width: 99%; width: 99%}

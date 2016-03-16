@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+/**
+ * @package    sauto
+ * @subpackage CSS
+ * @author     dacian strain {@link http://shop.elbase.eu}
+ * @author     Created on 01-May-2015
+ * @license    GNU/GPL
+ */
+
+
+.icon-48-sauto-categories.icon-48-categories {
+    background-image:
+        url(../../images/administrator/icon-48-com_sauto-categories.png);
+}
+
+.icon-48-sauto-category-edit.icon-48-category-edit {
+    background-image:
+        url(../../images/administrator/icon-48-com_sauto-category-edit.png);
+}
+
+.icon-48-sauto-category-add.icon-48-category-add {
+    background-image:
+        url(../../images/administrator/icon-48-com_sauto-category-add.png);
+}

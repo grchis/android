@@ -1,0 +1,104 @@
+
+		ul.domtabs2{
+			float:left;
+			width:100% !important;				
+		}
+		ul.domtabs2 li{
+			float:left;
+			width:50% !important;
+			padding:0 !important;
+		}
+		ul.domtabs2 a:link,
+		ul.domtabs2 a:visited,
+		ul.domtabs2 a:active,
+		ul.domtabs2 a:hover{
+			/*width:8em;*/
+			padding:.2em 1em;
+			display:block;
+			background:#666;
+			color:#ccc;
+			/*height:3em;*/
+			font-weight:bold;
+			text-decoration:none;
+		}
+		html>body ul.domtabs2 a:link,
+		html>body ul.domtabs2 a:visited,
+		html>body ul.domtabs2 a:active,
+		html>body ul.domtabs2 a:hover{
+			height:auto;
+			color:#fff;
+			/*min-height:3em;*/
+		}
+		ul.domtabs2 a:hover{
+			background:#dcebff;
+			color:#fff;
+		}
+		div.domtab2 div{
+			clear:both;
+			width:auto;
+		}
+		.sa_border_tab {
+		border:1px solid black;
+		}
+		ul.domtabs2 li.active a:link,
+		ul.domtabs2 li.active a:visited,
+		ul.domtabs2 li.active a:active,
+		ul.domtabs2 li.active a:hover{
+			background:#509eff;
+			/*color:#fff;*/
+			/*font-size:14px;*/
+		}
+		#domtabprintview{
+			float:right;
+			padding-right:1em;
+			text-align:right;
+		}
+		#domtabprintview a:link,
+		#domtabprintview a:visited,
+		#domtabprintview a:active,
+		#domtabprintview a:hover{
+			/*color:#fff;*/
+		}
+		p{
+			margin:0 0 .5em 0;
+			line-height:1.3em;
+		}
+		h2{
+			font-size:1.3em;
+			color:#cfc;
+			text-transform:uppercase;
+			font-family:"Trebuchet MS",Arial,Sans-Serif;
+			padding:0 0 .7em .2em;
+		}
+
+		pre{
+			font-size:1.2em;
+			padding:1em;
+		}
+		div.domtab2 div h2 a,
+		div.domtab2 div h2 a:hover,
+		div.domtab2 div h2 a:active
+		{
+			color:#cfc;
+			display:inline;
+			padding:0;
+			font-weight:normal;
+			font-size:1em;
+		}
+		
+.sa_reg_tab {
+position:relative;
+top:-5px;
+left:10px;
+font-size:16px;
+}
+.sa_reg_abon {
+position:relative;
+top:-3px;
+left:10px;
+}
+input[type="radio"] {
+    -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+    -moz-appearance: checkbox;    /* Firefox */
+    -ms-appearance: checkbox;     /* not currently supported */
+}		

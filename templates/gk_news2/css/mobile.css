@@ -1,0 +1,624 @@
+/*
+#------------------------------------------------------------------------
+# News II - February Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2013 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+/* Common html elements */
+#k2Contaniner iframe {
+	max-height: 240px;
+}
+
+/* Top */
+#gkBannerTop {
+	display: none;
+}
+#gkLogo {
+	float: none;
+	margin: 20px auto;
+}
+#gkToolbar {
+	height: 92px;
+	padding: 35px 0 0 0!important;
+}
+#gkUpdates {
+	border-bottom: 1px solid #e5e5e5;
+	top: 0;
+	width: 50%;
+}
+#gkSearch {
+	border-bottom: 1px solid #e5e5e5;
+	border-right: none;
+	left: 50%;
+	top: 0;
+	width: 50%;
+}
+#gkSearch #mod-search-searchword {
+	height: 35px;
+	line-height: 35px;
+}
+#gkSearch:after {
+	line-height: 35px;
+	right: 10px;
+}
+#gkSocial {
+	float: left;
+	margin-left: 10px;
+}
+
+/* Containers */
+#gkBannerLeft,
+#gkBannerRight {
+	clear: both;
+	float: none;
+	margin: 0 auto;
+	max-width: 480px;
+	width: 100%;
+}
+
+/* Menu */
+
+/* limitation suffixes */
+.notablet {
+	display: block!important;
+}
+.nomobile {
+	display: none!important;
+}
+.onlytablet {
+	display: none!important;
+}
+.onlymobile {
+	display: block!important;
+}
+.notablet.nomobile {
+	display: none!important;
+}
+
+/* Fix for the user profile */
+.profile dt {
+	width: 100% !important;
+}
+
+/* Fix for the contact page */
+.contact .contact-image {
+	float: left !important;
+}
+.contact .contact-address {
+	clear: both !important;
+	padding-top: 20px !important;
+}
+.contact .contact-form input,
+.contact .contact-form textarea {
+	width: 100% !important;
+}
+
+/* Fix for the search */
+fieldset.word #search-searchword,
+fieldset.word .inputbox {
+	width: 50%;
+}
+fieldset.phrases .ordering-box,
+fieldset.only input[type="checkbox"],
+fieldset.phrases input[type="radio"] {
+	clear: both;
+}
+
+/* Fix for the register */
+#member-registration dd {
+	clear: both !important;
+	display: block !important;
+}
+
+/* Fix for tables */
+fieldset {
+	box-sizing: border-box!important;
+	max-width: 100%!important;
+	width: 100%!important;
+	overflow: hidden;
+}
+#gkMainbody table:before {
+	content: "Scroll horizontally to view the whole table";
+	height: 14px;
+	width: 100%;
+	display: block;
+	font-size: 10px;
+	margin-top: -30px;
+	margin-bottom: 10px;
+	font-family: Arial, sans-serif;
+}
+#gkMainbody table {
+	width: 540px!important;
+	display: block!important;
+	padding: 30px 0 20px 0; /* padding for the scrollbars and the top message */
+	overflow:scroll;
+	max-width: 100%;
+	-webkit-overflow-scrolling:touch;
+}
+
+#gkMainbody table tbody,
+#gkMainbody table thead,
+#gkMainbody table tfoot {
+	width: 540px!important;
+	display: table;
+}
+
+/* top/bottom modules */
+.box.gkmod-1,
+.box.gkmod-2,
+.box.gkmod-3,
+.box.gkmod-4,
+.box.gkmod-more {
+	float: left!important;	
+}
+.box.gkmod-1,
+.box.gkmod-2,
+.box.gkmod-3,
+.box.gkmod-4,
+.box.gkmod-more {
+	width: 100%!important;
+}
+.box.gkmod-more.gkmod-last-1:last-child,
+.box.gkmod-more.gkmod-last-2:last-child,
+.box.gkmod-more.gkmod-last-2:nth-last-child(2),
+#gkPageWrap .box.gkmod-more.gkmod-last-3:last-child,
+#gkPageWrap .box.gkmod-more.gkmod-last-3:nth-last-child(2),
+#gkPageWrap .box.gkmod-more.gkmod-last-3:nth-last-child(3) {
+	width: 100%!important;
+}
+
+/* top/bottom modules */
+body #gkPage .box {
+	margin-bottom: 20px!important;
+}
+
+/* 3-column layout */
+.gkCols3 .box.gkmod-more:nth-child(1n) {
+	clear: both;
+}
+.gkCols3 .box.gkmod-1,
+.gkCols3 .box.gkmod-2,
+.gkCols3 .box.gkmod-3,
+.gkCols3 .box.gkmod-more,
+.gkCols3 .box.gkmod-more.gkmod-last-1:last-child,
+.gkCols3 .box.gkmod-more.gkmod-last-2:last-child,
+.gkCols3 .box.gkmod-more.gkmod-last-2:nth-last-child(2) {
+	width: 100%!important;
+}
+
+/* 4-column layout */
+body .gkCols4 .box.gkmod-more:nth-child(1n) {
+	clear: both;
+}
+body .gkCols4 .box.gkmod-1,
+body .gkCols4 .box.gkmod-2,
+body .gkCols4 .box.gkmod-3,
+body .gkCols4 .box.gkmod-4,
+body .gkCols4 .box.gkmod-more,
+body .gkCols4 .box.gkmod-more.gkmod-last-1:last-child,
+body .gkCols4 .box.gkmod-more.gkmod-last-2:last-child,
+body .gkCols4 .box.gkmod-more.gkmod-last-2:nth-last-child(2),
+body .gkCols4 .box.gkmod-more.gkmod-last-3:last-child,
+body .gkCols4 .box.gkmod-more.gkmod-last-3:nth-last-child(2),
+body .gkCols4 .box.gkmod-more.gkmod-last-3:nth-last-child(3) {
+	width: 100%!important;
+}
+
+/* 6-column layout */
+body .gkCols6 .box.gkmod-more:nth-child(1n) { 
+	clear: both; 
+}
+body .gkCols6 .box.gkmod-1,
+body .gkCols6 .box.gkmod-2,
+body .gkCols6 .box.gkmod-3,
+body .gkCols6 .box.gkmod-4,
+body .gkCols6 .box.gkmod-more,
+body .gkCols6 .box.gkmod-5,
+body .gkCols6 .box.gkmod-more,
+body .gkCols6 .box.gkmod-6,
+body .gkCols6 .box.gkmod-more,
+body .gkCols6 .box.gkmod-more.gkmod-last-1:last-child,
+body .gkCols6 .box.gkmod-more.gkmod-last-2:last-child,
+body .gkCols6 .box.gkmod-more.gkmod-last-2:nth-last-child(2),
+body .gkCols6 .box.gkmod-more.gkmod-last-3:last-child,
+body .gkCols6 .box.gkmod-more.gkmod-last-3:nth-last-child(2),
+body .gkCols6 .box.gkmod-more.gkmod-last-3:nth-last-child(3),
+body .gkCols6 .box.gkmod-more.gkmod-last-4:last-child,
+body .gkCols6 .box.gkmod-more.gkmod-last-4:nth-last-child(2),
+body .gkCols6 .box.gkmod-more.gkmod-last-4:nth-last-child(3),
+body .gkCols6 .box.gkmod-more.gkmod-last-4:nth-last-child(4),
+body .gkCols6 .box.gkmod-more.gkmod-last-5:last-child,
+body .gkCols6 .box.gkmod-more.gkmod-last-5:nth-last-child(2),
+body .gkCols6 .box.gkmod-more.gkmod-last-5:nth-last-child(3),
+body .gkCols6 .box.gkmod-more.gkmod-last-5:nth-last-child(4),
+body .gkCols6 .box.gkmod-more.gkmod-last-5:nth-last-child(5) {
+	width: 100%!important;
+}
+
+/* NSP adjustments */
+
+/* other elements */
+article header h1, 
+.category header {
+	line-height: 32px;
+	padding: 18px 0 0px;
+}
+
+article header h1, 
+.category header, 
+article header h2 {
+	font-size: 24px;
+}
+
+h1 {
+	font-size: 28px;
+}
+
+h2, 
+.componentheading,
+.category header h2 {
+	font-size: 28px;
+}
+
+article header h2 {
+	line-height: 32px;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+h4 {
+	font-size: 20px;
+}
+
+h5 {
+	font-size: 16px;
+}
+
+h6 {
+	font-size: 14px;
+}
+
+#gkSocialAPI {
+	overflow: hidden;
+}
+
+.itemBody {
+	width: 100%!important;
+}
+#gkInset {
+	width: 100%!important;
+}
+
+.itemComments .itemCommentsList li img {
+	float: left;
+	margin-left: 0;
+	margin-right: 10px;
+	position: static;
+}
+
+.itemCommentsList li h3 {
+	float: none;
+	margin-top: 5px;
+}
+
+#gkMainbody .registration {
+	width: 100%;
+}
+
+/* NSP */
+.nspArt {
+	width: 100%;
+}
+.box.highlights .nspTopInterface {
+	border: 1px solid #e5e5e5;
+}
+.box.highlights .nspTitleArea {
+	padding: 0 50px;
+}
+.box.highlights .nspTopInterface .nspPrev {
+	left: 8px;
+}
+.box.highlights .nspTopInterface .nspNext {
+	right: 8px;
+}
+.box.highlights .nspHeader {
+	font-size: 24px;
+	line-height: 28px;
+}
+.box.highlights .readon {
+	margin-top: 25px;
+}
+
+/* Tabs */
+.gkTabsWrap ol li {
+    border-left: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+}
+.bigtabs .gkTabsWrap ol li {
+	padding: 0 10px!important;
+}
+.gkTabsWrap ol li:after {
+	display: none;
+}
+
+/* Other elements */
+#gkFooterArea > div {
+	width: 65%;
+}
+.gk-newsletter input[type="button"] {
+	margin: 0 0 0 2%;
+	width: 40%;
+}
+.gk-newsletter input[type="email"] {
+	margin-left: 0;
+	width: 58%;
+}
+.contact-form dl {
+	width: 100%;
+}
+
+/* K2 and com_content fixes */
+.itemContainer,
+.blog .items-row > div, 
+.blog-featured .items-row > div {
+	border-left: none;
+	clear: both;
+	display: block;
+	width: 100%;
+}
+.itemAuthorContent ul li {
+	margin: 0 0 12px 0;
+	width: 100%;
+}
+#k2Container .itemContainer{width:100%!important;}
+#k2Container .subCategoryContainer{width:100%!important;}
+#k2Container .subCategory{height:auto!important;}
+aside.itemAsideInfo {
+	display: none;
+}
+.itemBody.gkHasAside {
+	padding-left: 0;
+}
+.latestView .itemsContainer {
+	float: none;
+	width: 100%!important;
+}
+.itemCommentsList li > div > div > span {
+	clear: both;
+	display: block;
+}
+.itemCommentsList li > div {
+	margin-left: 0!important;
+}
+.itemComments h3 {
+	font-size: 20px;
+	padding: 10px 0 0;
+}
+article header h1,
+article header h2 {
+	font-size: 24px!important;
+	line-height: 1.2;
+}
+.genericView .itemView {
+	padding: 0!important;
+	width: 100%!important;
+}
+.itemAuthorDetails {
+	clear: both;
+	margin: 0!important;
+	padding: 10px;
+}
+.itemAuthorData {
+	padding: 0;
+}
+.itemAuthorData img {
+	display: block;
+	margin: 0 0 20px 0;
+}
+.itemAuthorBlock > .gkAvatar > img {
+	margin: 12px!important;
+}
+.itemComments h3, 
+.itemAuthorContent h3 {
+	padding: 0 0 24px;
+}
+.itemComments p {
+	clear: both;
+} 
+.itemComments .itemCommentsList li span {
+	font-size: 12px;
+	margin: 0 12px 0 0;
+	clear: both;
+	float: left;
+} 
+.k2LatestCommentsBlock img, 
+.itemAuthorBlock > .gkAvatar > img,
+.itemComments .itemCommentsList li > img {
+	margin: 10px 30px;
+}
+.itemComments .itemCommentsList li {
+	padding: 24px 0 12px 0;
+}
+
+/* Overlay menu */
+#gkMainMenu.gkMenuOverlay .gkMenu > ul > li,
+#gkMainMenu.gkMenuOverlay .gkMenu > ul > li a {
+	height: 32px;
+	line-height: 32px;
+}
+#gkMainMenu.gkMenuOverlay .gkMenu {
+	margin: 0 -10px!important;
+}
+#gkMenuOverlayWrap {
+    margin: -20px 0 0 -150px!important;
+    max-width: 300px!important;
+}
+
+#gkMenuOverlayWrap.open {
+    margin-top: 0!important;
+}
+
+#gkMenuOverlayContent .gkcol li {
+    font-size: 15px;
+}
+
+#gkMenuOverlayContent .gkcol li,
+#gkMenuOverlayContent .gkcol li a {
+    line-height: 38px;
+}
+
+#gkMenuOverlayHeader {
+    font-size: 36px;
+    line-height: 72px;
+}
+
+#gkMenuOverlayClose {
+    font-size: 20px;
+    line-height: 72px;        
+}
+.gkwMainLeft > i, .gkwMainLeft > i:before {
+	margin: -9px 0 0 0px;
+}
+.gkNspPM-VideoList .gkItemsPage figure {
+	padding: 0 2px;
+}
+.gkNspPM-VideoList h3 {
+	font-size: 12px;
+}
+.gkwMainLeft > *:first-child {
+	font-size: 36px!important;
+}
+.gkwMainLeft {
+	padding: 0 8px 0 0px;
+}
+.gkwTemp {
+	font-size: 13px;
+}
+
+@media (max-width: 480px) {
+	.box.highlights .nspTopInterface {
+		border: none;
+		border-bottom: 1px solid #e5e5e5;
+		border-top: 1px solid #e5e5e5;
+	}
+	#gkFixedMenu #gkSocial {
+		display: none;
+	}
+	.gkCols3 .box,
+	.gkCols4 .box,
+	.gkCols6 .box,
+	#gkMainbody .box,
+	#gkSidebarLeft .box,
+	#gkSidebarRight .box,
+	.gkCols3 .box.clear,
+	.gkCols4 .box.clear,
+	.gkCols6 .box.clear,
+	#gkMainbody .box.clear,
+	#gkSidebarLeft .box.clear,
+	#gkSidebarRight .box.clear,
+	.gkCols3 .box.clear-horizontal,
+	.gkCols4 .box.clear-horizontal,
+	.gkCols6 .box.clear-horizontal,
+	#gkMainbody .box.clear-horizontal,
+	#gkSidebarLeft .box.clear-horizontal,
+	#gkSidebarRight .box.clear-horizontal {
+		border: none!important;
+		clear: both;
+		float: none!important;
+		margin: 0 auto!important;
+		max-width: 320px;
+		width: 100%;
+	}
+	.gkHighlighterInterface span.text {
+		margin: 0 0 0 6px;
+	}
+	#gkUpdates {
+		display: none;
+	}
+	#gkSearch {
+		left: 0;
+		width: 100%;
+	}
+	.nspArts,
+	.nspLinksWrap {
+		clear: both;
+		width: 100%!important;
+	}
+	.nspLinks {
+		padding: 20px 0!important;
+	}
+	#gkBottom1,
+	#gkBottom2 {
+		padding-top: 20px;
+	}
+	.nspLinks ul li h4 {
+		font-size: 14px;
+	}
+	ul.gkwNextDays li.gkwItems2 > *:first-child {
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+		width: 100%;
+	}
+	.gkwDay {
+		clear: both;
+	}
+	.gkwMainLeft,
+	.gkwMainRight {
+		width: 100%;
+	}
+	#gkBackToTop {
+		display: block;
+		padding: 10px 0;
+		text-align: center;
+		width: 100%;
+	}
+	#gkFooterArea > div {
+		width: 100%;
+	}
+	.gk-newsletter strong {
+		text-align: center;
+		width: 100%;
+	}
+	#gkFooterNav li {
+		font-size: 12px;
+		line-height: 12px;
+		margin: 10px 0;
+		padding: 0 10px;
+	}
+	#gkCopyrights {
+		width: 100%;
+	}
+	.gkNspPM-VideoList .gkItemsPage[data-cols="1"] figure,
+	.gkNspPM-VideoList .gkItemsPage[data-cols="2"] figure,
+	.gkNspPM-VideoList .gkItemsPage[data-cols="3"] figure,
+	.gkNspPM-VideoList .gkItemsPage[data-cols="4"] figure,
+	.gkNspPM-VideoList .gkItemsPage[data-cols="5"] figure,
+	.gkNspPM-VideoList .gkItemsPage[data-cols="6"] figure {
+		width: 100%;
+	}
+}
+@media (max-width: 420px) { 
+	#gkSocial a {
+		padding: 0 3px;
+	}
+	.itemComments .itemCommentsList li > div {
+		padding: 10px;
+	}
+	.k2LatestCommentsBlock img, 
+	.itemAuthorBlock > .gkAvatar > img, 
+	.itemComments .itemCommentsList li > img {
+		margin: 10px;
+	}
+}

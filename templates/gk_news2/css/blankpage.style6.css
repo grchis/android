@@ -1,0 +1,326 @@
+/*
+#------------------------------------------------------------------------
+# game. - December Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2013 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+/* Basic elements */
+html { -webkit-font-smoothing: subpixel-antialiased; }
+body {
+	background: #F6F7F9;
+	color: #777;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	font-weight: 300;
+	line-height: 1.6;
+	margin: 0;
+	min-height: 100%;
+	padding: 0;
+	word-wrap: break-word;
+}
+a {
+	color: #ff8000;
+	-webkit-transition: color 0.2s linear;
+	-moz-transition: color 0.2s linear;
+	-o-transition: color 0.2s linear;
+	transition: color 0.2s linear;
+	text-decoration: none;
+}
+a:hover,
+a:active,
+a:focus { color: #000; }
+h1,
+h2,
+legend {
+	color: #222;
+	font-weight: 600;
+	margin: 0;
+}
+p { margin: 0.2em 0 2em; }
+h2 { font-size: 16px; }
+.login header {
+	border-bottom: 1px solid #E5E5E5;
+	letter-spacing: -0.5px;
+	margin: -6px -52px 42px;
+	padding: 0 52px 12px;
+}
+legend {
+	display: block;
+	font-size: 21px;
+	margin: 0;
+	padding: 0 0 24px;
+	text-align: center;
+}
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="email"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #fff;
+	border-color: #bcbcbc #dadada #e5e5e5;
+	border-style: solid;
+	border-width: 1px;
+	color: #777;
+	padding: 12px 20px !important;
+	max-width: 100%!important;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="email"]:focus,
+textarea:focus { background: #fffef4; }
+button,
+.button,
+input.button,
+span.button,
+button.button,
+div.button,
+input[type="submit"],
+input[type="button"] {
+	-webkit-appearance: none;
+	background: #ff8000;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 12px;
+	height: 38px;
+	line-height: 39px;
+	margin: 0 5px 2px 2px;
+	padding: 0 14px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: all 0.3s ease-out 0s;
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+}
+button:hover,
+.button:hover,
+input.button:hover,
+span.button:hover,
+button.button:hover,
+div.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover { background: #222; }
+/* containers */
+#gkPage {
+	padding: 0;
+	margin: 0 auto;
+}
+/* Logo  */
+
+#gkLogo {
+	float: none;
+	height: 40px;
+	margin: 0 auto;
+	padding: 0;
+	text-indent: -999em;
+	text-shadow: none;
+	width: 124px;
+	display: block;
+}
+#gkLogo img {
+	display: block;
+	margin: 0;
+}
+#gkLogo.cssLogo {
+	background: transparent url('../images/style6/logo.png') no-repeat 0 0;
+	/* You can specify there logo size and background */
+	height: 40px;
+	width: 124px;
+}
+#gkLogo.text {
+	color: #ff8000;
+	display: block;
+	float: left;
+	height: 40px;
+	margin: 0;
+	padding: 10px 0 0 0;
+	text-indent: 0;
+	width: auto;
+}
+#gkLogo.text > span {
+	display: block;
+	font-size: 40px;
+	font-weight: 600;
+	letter-spacing: -3px;
+	line-height: 40px;
+	padding: 0;
+	text-transform: uppercase;
+}
+#gkLogo.text > span > sup {
+	border: 1px solid #ff8000;
+	border-radius: 50%;
+	color: #ff8000;
+	display: block;
+	font-size: 10px;
+	font-weight: 400;
+	float: right;
+	height: 14px;
+	left: 5px;
+	line-height: 14px;
+	text-align: center;
+	text-indent: -3px;
+	top: -4px;
+	width: 14px;
+}
+#gkLogo.text .gkLogoSlogan {
+	color: #e5e5e5;
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 10px;
+	text-align: left;
+}
+/* Main wrapper */
+#gkPageWrap {
+	background: #fff;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+	-ms-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 52px auto;
+	max-width: 95%;
+	overflow: hidden;
+	padding: 32px 52px;
+	width: 924px;
+}
+.login > div {
+	float: left;
+	width: 45%;
+}
+.login > div + div {
+	border-left: 1px solid #e5e5e5;
+	float: right;
+	padding: 0 0 0 5%;
+}
+/* Login form */
+.readon {
+	border: 1px solid #ddd;
+	display: inline-block;
+	font-size: 12px;
+	height: 38px;
+	line-height: 39px;
+	padding: 0 14px;
+	text-align: center;
+	text-transform: uppercase;
+}
+#com-login-form input,
+#com-login-form button {
+	margin: 0 0 10px 0;
+	width: 100%;
+}
+.login ul {
+	float: right;
+    padding: 15px 0 0;
+}
+.login li {
+	float: left;
+	list-style-type: none;
+	margin: 0 0 0 20px;
+}
+.login li a { color: #999; }
+.login li a:active,
+.login li a:focus,
+.login li a:hover { color: #ff8000; }
+.jcancel { 
+	border-top: 1px solid #E5E5E5;
+	margin-top: 32px;
+	text-align: center;
+}
+.jcancel span {
+	background: #fff;
+	display: inline-block;
+	padding: 0 12px;
+	position: relative;
+	top: -12px;
+}
+span#fb-auth small {
+	width: 20px;
+	background: transparent url('../images/fbauth.png') no-repeat 0 2px;
+	text-indent: -999em;
+	display: block;
+	float: left;
+	border-right: 1px solid #a0aecd;
+	margin: 3px 16px 0 0;
+	height: 17px;
+}
+span#fb-auth {
+	background-color: #798db9;
+	display: inline-block;
+	color: #fff;
+	font-family: arial;
+	line-height: 26px;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 3px 0 0 0;
+	padding: 7px 24px 7px 12px;
+	text-decoration: none;
+	text-shadow: 1px 1px 0px #445375;
+	cursor: pointer;
+	height: 24px;
+	-webkit-transition: background-color 0.2s ease-out;
+	-moz-transition: background-color 0.2s ease-out;
+	-o-transition: background-color 0.2s ease-out;
+	transition: background-color 0.2s ease-out;
+	position: relative;
+	top: -3px;
+}
+span#fb-auth:hover { background-color: #556b9b; }
+/* Register form */
+.login,
+.registration { overflow: hidden;padding: 0 0 32px; }
+.registration button,
+.registration input {
+	margin: 0 0 10px 0;
+	width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+	.login ul {
+		float: left;
+	}
+	.login ul li {
+		clear: both;
+		margin: 0;
+	}
+}
+
+@media (max-width: 640px) {
+	#gkPageWrap {
+		padding: 24px 16px;
+	}
+}
+
+@media (max-width: 480px) {
+	.login {
+		padding: 0!important;
+	}
+	.login > div {
+		padding: 25px 0!important;
+		width: 100%;
+	}
+	.login header {
+		margin-bottom: 0;
+	}
+}

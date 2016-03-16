@@ -1,0 +1,60 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 0 (0x0)
+    Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=RO, ST=Bucharest, L=Bucharest, O=N E T O P I A , OU=N E T O P I A Development Team, CN=mobilpay.ro/emailAddress=support@mobilpay.ro
+        Validity
+            Not Before: Aug  5 15:04:22 2014 GMT
+            Not After : Aug  5 15:04:22 2015 GMT
+        Subject: C=RO, ST=Bucharest, L=Bucharest, O=N E T O P I A , OU=N E T O P I A Development Team, CN=mobilpay.ro/emailAddress=support@mobilpay.ro
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:bc:21:d3:f3:61:12:96:45:b8:ab:e0:85:9f:4d:
+                    ef:90:97:6d:ad:39:31:63:42:87:8d:b6:91:c7:c5:
+                    29:ba:8f:e5:85:62:09:40:60:dc:c7:39:65:87:75:
+                    7b:45:e2:f5:48:b5:40:8d:99:fe:3b:ef:72:1a:c3:
+                    64:64:30:8d:aa:c0:a6:bd:d2:f5:ba:30:1c:49:19:
+                    1f:cd:59:a2:53:a8:3c:70:59:6d:8a:40:db:c0:48:
+                    c8:76:11:71:a4:d7:8c:bb:62:04:6b:e3:a7:0b:b3:
+                    96:39:97:78:1a:15:2e:29:c8:68:4d:08:52:93:1e:
+                    9f:d3:0b:58:6d:9f:18:c7:5d
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Key Identifier: 
+                3D:C9:70:A1:30:6C:73:53:34:1F:96:69:17:4F:5A:32:20:1A:1E:B5
+            X509v3 Authority Key Identifier: 
+                keyid:3D:C9:70:A1:30:6C:73:53:34:1F:96:69:17:4F:5A:32:20:1A:1E:B5
+
+            X509v3 Basic Constraints: 
+                CA:TRUE
+    Signature Algorithm: md5WithRSAEncryption
+         72:7d:72:8c:c2:04:4f:30:68:c2:e6:39:14:c8:fb:03:68:9a:
+         d7:6a:2b:ee:71:c1:c0:cb:f5:82:ff:21:34:d3:37:c2:65:e7:
+         9a:a1:3f:f8:1d:17:74:73:f9:35:ad:dc:43:fe:ec:53:97:2f:
+         ae:af:2b:69:5d:eb:27:5d:92:cc:21:db:02:a4:cb:29:16:6a:
+         b2:e7:4f:40:d2:b1:4f:87:7d:7f:6d:29:07:d6:0e:c7:29:47:
+         fc:56:ef:fd:a8:bb:78:1b:18:5f:98:4a:b4:2c:b1:43:b1:78:
+         4f:dc:1f:47:70:61:f8:32:4a:a7:3d:59:9d:67:3a:9a:dd:8b:
+         42:62
+-----BEGIN CERTIFICATE-----
+MIIDKjCCApOgAwIBAgIBADANBgkqhkiG9w0BAQQFADCBsTELMAkGA1UEBhMCUk8x
+EjAQBgNVBAgMCUJ1Y2hhcmVzdDESMBAGA1UEBwwJQnVjaGFyZXN0MRcwFQYDVQQK
+DA5OIEUgVCBPIFAgSSBBIDEnMCUGA1UECwweTiBFIFQgTyBQIEkgQSBEZXZlbG9w
+bWVudCBUZWFtMRQwEgYDVQQDDAttb2JpbHBheS5ybzEiMCAGCSqGSIb3DQEJARYT
+c3VwcG9ydEBtb2JpbHBheS5ybzAeFw0xNDA4MDUxNTA0MjJaFw0xNTA4MDUxNTA0
+MjJaMIGxMQswCQYDVQQGEwJSTzESMBAGA1UECAwJQnVjaGFyZXN0MRIwEAYDVQQH
+DAlCdWNoYXJlc3QxFzAVBgNVBAoMDk4gRSBUIE8gUCBJIEEgMScwJQYDVQQLDB5O
+IEUgVCBPIFAgSSBBIERldmVsb3BtZW50IFRlYW0xFDASBgNVBAMMC21vYmlscGF5
+LnJvMSIwIAYJKoZIhvcNAQkBFhNzdXBwb3J0QG1vYmlscGF5LnJvMIGfMA0GCSqG
+SIb3DQEBAQUAA4GNADCBiQKBgQC8IdPzYRKWRbir4IWfTe+Ql22tOTFjQoeNtpHH
+xSm6j+WFYglAYNzHOWWHdXtF4vVItUCNmf4773Iaw2RkMI2qwKa90vW6MBxJGR/N
+WaJTqDxwWW2KQNvASMh2EXGk14y7YgRr46cLs5Y5l3gaFS4pyGhNCFKTHp/TC1ht
+nxjHXQIDAQABo1AwTjAdBgNVHQ4EFgQUPclwoTBsc1M0H5ZpF09aMiAaHrUwHwYD
+VR0jBBgwFoAUPclwoTBsc1M0H5ZpF09aMiAaHrUwDAYDVR0TBAUwAwEB/zANBgkq
+hkiG9w0BAQQFAAOBgQByfXKMwgRPMGjC5jkUyPsDaJrXaivuccHAy/WC/yE00zfC
+ZeeaoT/4HRd0c/k1rdxD/uxTly+urytpXesnXZLMIdsCpMspFmqy509A0rFPh31/
+bSkH1g7HKUf8Vu/9qLt4GxhfmEq0LLFDsXhP3B9HcGH4MkqnPVmdZzqa3YtCYg==
+-----END CERTIFICATE-----

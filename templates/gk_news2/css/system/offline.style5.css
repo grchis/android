@@ -1,0 +1,281 @@
+/*
+#------------------------------------------------------------------------
+# game. - December Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2013 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+
+/* Basic elements */
+html { 
+	-webkit-font-smoothing: subpixel-antialiased; 
+}
+body {
+	background: #fff;
+	color: #555;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	font-weight: 300;
+	line-height: 1.6;
+	margin: 0;
+	min-height: 100%;
+	padding: 0;
+	word-wrap: break-word;
+}
+a {
+	color: #348899;
+	-webkit-transition: color 0.2s linear;
+	-moz-transition: color 0.2s linear;
+	-o-transition: color 0.2s linear;
+	transition: color 0.2s linear;
+	text-decoration: none;
+}
+a:hover,
+a:active,
+a:focus { 
+	color: #000; 
+}
+
+/* containers */
+#gkPage {
+	min-width: 280px;
+	max-width: 100%;
+	padding: 0;
+	margin: 0 auto;
+}
+#gkPageTop {
+	width: 100%;
+}
+#gkPageWrap {
+	background: transparent;
+	padding: 0 0 30px 0;
+	width: 100%;
+}
+#frame {
+	clear: both;
+	margin: 0;
+	overflow: hidden;
+	padding: 20px 15px;
+}
+
+/* Logo  */
+#gkPageTop {
+	text-align: center;
+}
+#gkLogo {
+	float: none;
+	height: 40px;
+	margin: 45px auto 35px auto;
+	padding: 0;
+	text-indent: -999em;
+	text-shadow: none;
+	width: 124px;
+	display: block;
+}
+#gkLogo img {
+	display: block;
+	margin: 0 auto;
+}
+#gkLogo.cssLogo {
+	background: transparent url('../../images/style5/logo.png') no-repeat 0 0;
+	/* You can specify there logo size and background */
+	height: 40px;
+	width: 124px;
+}
+#gkLogo.text {
+	color: #348899;
+	display: block;
+	float: left;
+	height: 40px;
+	margin: 0;
+	padding: 10px 0 0 0;
+	text-indent: 0;
+	width: auto;
+}
+#gkLogo.text > span {
+	display: block;
+	font-size: 40px;
+	font-weight: 600;
+	letter-spacing: -3px;
+	line-height: 40px;
+	padding: 0;
+	text-transform: uppercase;
+}
+#gkLogo.text > span > sup {
+	border: 1px solid #348899;
+	border-radius: 50%;
+	color: #348899;
+	display: block;
+	font-size: 10px;
+	font-weight: 400;
+	float: right;
+	height: 14px;
+	left: 5px;
+	line-height: 14px;
+	text-align: center;
+	text-indent: -3px;
+	top: -4px;
+	width: 14px;
+}
+#gkLogo.text .gkLogoSlogan {
+	color: #e5e5e5;
+	display: block;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 10px;
+	text-align: left;
+}
+
+/* Other elements */
+h2 {
+	color: #555;
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 1.2;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+fieldset {
+	border: none;
+	margin: 20px auto 0;
+	width: 660px;
+	overflow: hidden;
+}
+p#username,
+p#password {
+	margin: 0 15px 15px 0;
+	float: left;
+	width: 265px;
+}
+p#remember,
+#form-login ul {
+	clear: both;
+}
+label {
+	line-height: 1.2;
+	display: block;
+	margin: 0 0 10px 0;
+	color: #555;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+div.buttons {
+	margin: 31px 0 0;
+}
+input[type="checkbox"] {
+	margin: 5px 5px 0 0;
+}
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="email"] {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-color: #BCBCBC #DADADA #e5e5e5;
+	border-style: solid;
+	border-width: 1px;
+	color: #777;
+	font-family: Arial,sans-serif;
+	padding: 12px 20px !important;
+	max-width: 100%!important;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+	background: #fffef4;
+}
+button,
+.button,
+input.button,
+span.button,
+button.button,
+input[type="submit"],
+input[type="button"] {
+   -webkit-appearance: none;
+   background: #fff;
+   border: 1px solid #ddd;
+   color: #afafaf;
+   cursor: pointer;
+   display: block;
+   float: left;
+   font-size: 12px;
+   height: 38px;
+   line-height: 39px;
+   margin: 0 5px 2px 2px;
+   padding: 0 14px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: all 0.3s ease-out 0s;
+   -webkit-transition: all .3s ease-out;
+   -moz-transition: all .3s ease-out;
+   -o-transition: all .3s ease-out;
+   transition: all .3s ease-out;
+}
+button:hover,
+.button:hover,
+input.button:hover,
+span.button:hover,
+button.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+	border: 1px solid #348899;
+	color: #348899;
+}
+#remember {
+	float: left;
+	width: auto;
+}
+label[for="remember"] {
+	float: left;
+	line-height: 21px;
+}
+/* messages */
+#system-message dt {
+	display: none;
+}
+#system-message-container {
+	margin: 0 auto 5px auto!important;
+	max-width: 660px;
+	padding: 0 0 20px 0;
+}
+#system-message dd ul {
+	list-style: none !important;
+	margin: 0!important;
+	padding: 0!important;
+}
+#system-message dd {
+	padding: 5px 12px;
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: 300;
+	margin: 0 0 10px 0;
+	background: #111;
+}
+#system-message dd.error {
+	color: #fff;
+	background: #348899;
+}
+#system-message dd.notice {
+	color: #fff;
+	background: #111;
+}
+
+@media (max-width:720px) {
+	h2 {
+		font-size: 16px;
+	}
+	fieldset {
+		width: 270px;
+	}
+}

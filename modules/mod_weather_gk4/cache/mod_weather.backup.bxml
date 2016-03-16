@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+		<rss version="2.0" xmlns:yweather="http://xml.weather.yahoo.com/ns/rss/1.0" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+			<channel>
+		
+<title>Yahoo! Weather - New York, NY</title>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/New_York__NY/*http://weather.yahoo.com/forecast/USNY0996_c.html</link>
+<description>Yahoo! Weather for New York, NY</description>
+<language>en-us</language>
+<lastBuildDate>Mon, 27 Apr 2015 1:49 am EDT</lastBuildDate>
+<ttl>60</ttl>
+<location city="New York" region="NY"   country="United States"/>
+<units temperature="C" distance="km" pressure="mb" speed="km/h"/>
+<wind chill="11"   direction="290"   speed="9.66" />
+<atmosphere humidity="43"  visibility="16.09"  pressure="1005.1"  rising="0" />
+<astronomy sunrise="5:57 am"   sunset="7:45 pm"/>
+<image>
+<title>Yahoo! Weather</title>
+<width>142</width>
+<height>18</height>
+<link>http://weather.yahoo.com</link>
+<url>http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif</url>
+</image>
+<item>
+<title>Conditions for New York, NY at 1:49 am EDT</title>
+<lat>40.71</lat>
+<long>-74.01</long>
+<link>http://us.rd.yahoo.com/dailynews/rss/weather/New_York__NY/*http://weather.yahoo.com/forecast/USNY0996_c.html</link>
+<pubDate>Mon, 27 Apr 2015 1:49 am EDT</pubDate>
+<condition  text="Cloudy"  code="26"  temp="11"  date="Mon, 27 Apr 2015 1:49 am EDT" />
+<description><![CDATA[
+<img src="http://l.yimg.com/a/i/us/we/52/26.gif"/><br />
+<b>Current Conditions:</b><br />
+Cloudy, 11 C<BR />
+<BR /><b>Forecast:</b><BR />
+Sun - Clear. High: 17 Low: 7<br />
+Mon - Partly Cloudy. High: 17 Low: 9<br />
+Tue - Mostly Sunny. High: 20 Low: 12<br />
+Wed - Mostly Sunny. High: 23 Low: 11<br />
+Thu - Mostly Cloudy. High: 18 Low: 9<br />
+<br />
+<a href="http://us.rd.yahoo.com/dailynews/rss/weather/New_York__NY/*http://weather.yahoo.com/forecast/USNY0996_c.html">Full Forecast at Yahoo! Weather</a><BR/><BR/>
+(provided by <a href="http://www.weather.com" >The Weather Channel</a>)<br/>
+]]></description>
+<forecast day="Sun" date="26 Apr 2015" low="7" high="17" text="Clear" code="31" />
+<forecast day="Mon" date="27 Apr 2015" low="9" high="17" text="Partly Cloudy" code="30" />
+<forecast day="Tue" date="28 Apr 2015" low="12" high="20" text="Mostly Sunny" code="34" />
+<forecast day="Wed" date="29 Apr 2015" low="11" high="23" text="Mostly Sunny" code="34" />
+<forecast day="Thu" date="30 Apr 2015" low="9" high="18" text="Mostly Cloudy" code="28" />
+<guid isPermaLink="false">USNY0996_2015_04_30_7_00_EDT</guid>
+</item>
+</channel>
+</rss>
+
+<!-- fan1596.sports.bf1.yahoo.com Sun Apr 26 23:10:28 PDT 2015 -->

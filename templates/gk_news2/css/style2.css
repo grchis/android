@@ -1,0 +1,287 @@
+/*
+#------------------------------------------------------------------------
+# News II - February Joomla! template (for Joomla 2.5)
+#
+# Copyright (C) 2007-2013 Gavick.com. All Rights Reserved.
+# License: Copyrighted Commercial Software
+# Website: http://www.gavick.com
+# Support: support@gavick.com 
+*/
+ 
+/* Style 1 */
+
+/* template.css */
+a,
+#gkMainbody header h2 a:active,
+#gkMainbody header h2 a:focus,
+#gkMainbody header h2 a:hover,
+#k2Container article header h2 a:active,
+#k2Container article header h2 a:focus,
+#k2Container article header h2 a:hover { color: #f2745c; }
+#gkLogo.cssLogo,
+#gkLogoSmall.cssLogo {
+	background-image: url('../images/style2/logo.png');
+}
+.svg #gkLogo.cssLogo,
+.svg #gkLogoSmall.cssLogo {
+	background-image: url('../images/style2/logo.svg');
+}
+#gkLogo.text,
+#gkLogoSmall.text {
+	color: #f2745c;
+}
+#gkLogo.text > span > sup,
+#gkLogoSmall.text > span > sup {
+	border: 1px solid #f2745c;
+	color: #f2745c;
+}
+#gkLogin {
+	background: #56afc3;
+}
+#gkLogin:active,
+#gkLogin:focus,
+#gkLogin:hover {
+	background: #f2745c;
+}
+#gkBreadcrumb .breadcrumbs li.separator i {
+	color: #f2745c;
+}
+#gkBackToTop:before {
+	color: #f2745c;
+}
+#gkBackToTop:active,
+#gkBackToTop:focus,
+#gkBackToTop:hover {
+	color: #f2745c!important;
+}
+#gkFooter a:active,
+#gkFooter a:focus,
+#gkFooter a:hover { 
+	color: #f2745c; 
+}
+.box.dark a:active,
+.box.dark a:focus,
+.box.dark a:hover { color: #f2745c!important; }
+.box.color {
+	background: #f2745c;
+}
+.box.title-color1 .header,
+.box.title-color1 .header a { color: #f2745c; }
+.box.title-color2 .header,
+.box.title-color2 .header a { color: #56afc3; }
+.box.title-color3 .header,
+.box.title-color3 .header a { color: #ffc000; }
+.box.title-color4 .header,
+.box.title-color4 .header a { color: #b7c96f; }
+.box.title-color5 .header,
+.box.title-color5 .header a { color: #c356c2; }
+.box.title-color6 .header, 
+.box.title-color6 .header a { color: #736357; }
+.box.title-border.title-color1 .header { border-top: 1px solid #f2745c; }
+.box.title-border.title-color2 .header { border-top: 1px solid #56afc3; }
+.box.title-border.title-color3 .header { border-top: 1px solid #ffc000; }
+.box.title-border.title-color4 .header { border-top: 1px solid #b7c96f; }
+.box.title-border.title-color5 .header { border-top: 1px solid #c356c2; }
+.box.title-border.title-color6 .header { border-top: 1px solid #736357; }
+#gkBottom3 .box a:active,
+#gkBottom3 .box a:focus,
+#gkBottom3 .box a:hover,
+#gkBottom4 .box a:active,
+#gkBottom4 .box a:focus,
+#gkBottom4 .box a:hover {
+	color: #f2745c;
+}
+
+/* joomla.css */
+button,
+.button,
+input.button,
+span.button,
+button.button,
+div.button,
+input[type="submit"],
+input[type="button"],
+.pagenav-prev a,
+.pagenav-next a,
+.readon,
+#gkMainbody .itemReadMore,
+#gkMainbody .readmore > a,
+.button.invert:active,
+.button.invert:focus,
+.button.invert:hover {
+	background: #f2745c;
+}
+.readon:active,
+.readon:focus,
+.readon:hover {	
+	color: #f2745c;
+}
+article header.itemHasImage h1 a:active,
+article header.itemHasImage h1 a:focus,
+article header.itemHasImage h1 a:hover { color: #f2745c!important; }
+.tip-title {
+	background: #f2745c;
+}
+#system-message dd.error {
+	background: #f2745c;
+}
+div.bannerfooter {
+	color: #f2745c;
+}
+dl#tabs dt.tabs h3:hover a,
+dl.tabs dt.tabs h3:hover a { 
+	color: #f2745c;
+}
+dl#tabs dt.tabs.open a,
+dl.tabs dt.tabs.open a {
+	background: #f2745c;
+}
+.autocompleter-queried { color: #f2745c!important }
+.box.menu li:hover:before {
+	color: #f2745c;
+}
+.box.menu li span.separator {
+	color: #f2745c;
+}
+
+/* gk_stuff.css */
+.nspPagination li:hover,
+.nspPagination li.active { background-color: #f2745c; }
+.nspNext:hover:after,
+.nspPrev:hover:after { color: #f2745c; }
+.nspArt h4.nspHeader a:hover { color: #f2745c; }
+.nspArt p.nspInfo a:active,
+.nspArt p.nspInfo a:focus,
+.nspArt p.nspInfo a:hover {
+	color: #f2745c!important;
+}
+.readon-button:active,
+.readon-button:focus,
+.readon-button:hover {
+	color: #f2745c;
+}
+.nspLinks ul li h4 a:active,
+.nspLinks ul li h4 a:focus,
+.nspLinks ul li h4 a:hover {
+	color: #f2745c;
+}
+.box.title-color1 .nspLinks ul li h4 a:hover,
+.box.title-color1 .nspArt h4.nspHeader a:hover { color: #f2745c; }
+.box.title-color1 .readon-button:hover {
+	color: #f2745c;
+}
+.box.title-color2 .nspLinks ul li h4 a:hover,
+.box.title-color2 .nspArt h4.nspHeader a:hover { color: #56afc3; }
+.box.title-color2 .readon-button:hover {
+	color: #56afc3;
+}
+.box.title-color3 .nspLinks ul li h4 a:hover,
+.box.title-color3 .nspArt h4.nspHeader a:hover { color: #ffc000; }
+.box.title-color3 .readon-button:hover {
+	color: #ffc000;
+}
+.box.title-color4 .nspLinks ul li h4 a:hover,
+.box.title-color4 .nspArt h4.nspHeader a:hover { color: #b7c96f; }
+.box.title-color4 .readon-button:hover {
+	color: #b7c96f;
+}
+.box.title-color5 .nspLinks ul li h4 a:hover,
+.box.title-color5 .nspArt h4.nspHeader a:hover { color: #c356c2; }
+.box.title-color5 .readon-button:hover {
+	color: #c356c2;
+}
+.box.title-color6 .nspLinks ul li h4 a:hover,
+.box.title-color6 .nspArt h4.nspHeader a:hover { color: #736357; }
+.box.title-color6 .readon-button:hover {	
+	color: #736357;
+}
+.box.highlights .nspInfo span {
+	color: #f2745c;
+}
+.box.highlights .nspTitleArea h4 a:active,
+.box.highlights .nspTitleArea h4 a:focus,
+.box.highlights .nspTitleArea h4 a:hover {
+	color: #f2745c;
+}
+.gkNspPM-VideoList .gkBottomNavNext:hover:after,
+.gkNspPM-VideoList .gkBottomNavPrev:hover:after { color: #f2745c; }
+.gkNspPM-VideoList .gkBottomNavPagination li:hover,
+.gkNspPM-VideoList .gkBottomNavPagination li.active { background-color: #f2745c; }
+.gkTabsWrap ol li.active,
+.gkTabsWrap ol li.active:hover {
+    background: #f2745c;
+}
+.gkTabsWrap ol li.active:after {
+	border-top-color: #f2745c;
+}
+.gkTabsWrap ol li:hover { 
+    color: #f2745c; 
+}
+.gk-newsletter strong > span {
+	color: #f2745c;
+}
+.gkHighlighterInterface div a.prev:hover:before,
+.gkHighlighterInterface div a.next:hover:before { 
+	color: #f2745c;
+}
+.gkHighlighterWrapper:hover .gkHighlighterItem a { color: #f2745c!important;}
+.gkwTemp {
+	color: #f2745c;
+}
+span.gkwDayDay {
+	color: #f2745c;
+}
+
+/* menu.css */
+.gkMenu > ul > li > a:hover,
+.gkMenu > ul > li > a:active,
+.gkMenu > ul > li > a:focus,
+.gkMenu > ul > li.active > a {
+	color: #f2745c;
+}
+.gkMenu > ul li div.childcontent a:hover {
+	color: #f2745c!important
+}
+#gkMenuOverlayClose {
+    color: #f2745c;
+}
+#gkMenuOverlayContent .gkcol li a:active,
+#gkMenuOverlayContent .gkcol li a:focus,
+#gkMenuOverlayContent .gkcol li a:hover {
+    color: #f2745c;
+}
+
+/* k2.css */
+.k2FeedIcon a:before,
+a.k2FeedIcon:before {
+	color: #f2745c;
+}
+.activeCategory a { color: #f2745c }
+.itemImageBlock sup {
+	background: #f2745c;
+}
+ul.itemTags li a:hover { 
+	background: #f2745c;
+}
+.k2CalendarBlock table.calendar tr td.calendarDateLinked a {
+	color: #f2745c;
+}
+.k2CalendarBlock table.calendar tr td.calendarToday {
+	background: #f2745c;
+}
+.k2CalendarBlock table.calendar tr td.calendarTodayLinked { background: #f2745c; }
+.calendarNavLink { color: #f2745c; }
+.k2TagCloudBlock a:hover { color: #f2745c }
+
+/* EasyBlog */
+#ezblog-body .blog-post .blog-title:hover, #ezblog-body .blog-post .blog-title a:hover {
+	color: #f2745c;
+}
+#eblog-wrapper .blog-taglist a:hover,
+#eblog-wrapper .post-tags li a:hover,
+#ezblog-menu .blog-navi li.toolbar-item.item-active {
+	background: #f2745c;
+}
+#ezblog-menu .blog-navi li.toolbar-item > form button.submit-search:hover {
+	background-color: #f2745c;
+}
