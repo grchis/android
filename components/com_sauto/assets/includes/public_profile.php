@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/public_profile_mobile.php');
+}else{
 //obtin id
 $id =& JRequest::getVar( 'id', '', 'get', 'string' );
 //echo '>>>> user id > '.$id;
@@ -364,119 +368,6 @@ $width = 'style="width:800px;"';
 		</td>
 	</tr>
 </table>
-
-
-
-
-<div id="m_visitors">
-	<div class = "m_header" style="width: 100%; height: 100px; background-color: #509EFF">
-	</div>
-	<b>
-	<h1><?php echo $profil->companie; ?></h1>
-	 </b>
-	<p><span> Reprezentant: </span> <?php echo $profil->reprezentant; ?></p>
-	<p><span> Oras: </span>	 <?php  echo $profil->localitate; ?></p>
-	<p><span> Judet: </span>    <?php  echo $profil->judet; ?></p>
-	<p><span> Adresa: </span>   <?php echo $profil->adresa; ?></p>
-	<p><span> Data Inregistrare: </span><?php echo $data_inreg[0]; ?></p>
-	<p><span> Calificativ: </span> <?php  echo round(100*$feeds,2).'% ('.$all.')';?></p>
-	<table class="sa_table_class">
-					<tr class="sa_table_feedback_row">
-						<th class="sa_table_feedback_cell"><?php echo JText::_('SAUTO_FEEDBACK_TYPE'); ?></th>
-						<th class="sa_table_feedback_cell"><?php echo JText::_('SAUTO_FEEDBACK_LAST_MONTH'); ?></th>
-						<th class="sa_table_feedback_cell">6 luni</th>
-						<th class="sa_table_feedback_cell"><?php echo JText::_('SAUTO_FEEDBACK_TOTAL'); ?></th>
-					</tr>
-					<?php
-					//obtin calificativele
-					$curent_date = time();
-					$last_30 = $curent_date - 2592000;
-					$last_6 = $curent_date - 15552000;
-					//echo '>>> '.$curent_date.'<br />';
-					$last_30 = date("Y-m-d h:i:s", $last_30);
-					$last_6 = date("Y-m-d h:i:s", $last_6);
-					//echo '>>>> '.$last_30.'<br />';
-					//echo '>>>>> '.$last_6.'<br />';
-					//pozitiv series
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'p' AND `data_cal` > '".$last_30."'";
-					$db->setQuery($query);
-					$poz_1 = $db->loadResult();
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'p' AND `data_cal` > '".$last_6."'";
-					$db->setQuery($query);
-					$poz_2 = $db->loadResult();
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'p'";
-					$db->setQuery($query);
-					$poz_3 = $db->loadResult();
-					//negativ series
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'x' AND `data_cal` > '".$last_30."'";
-					$db->setQuery($query);
-					$neg_1 = $db->loadResult();
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'x' AND `data_cal` > '".$last_6."'";
-					$db->setQuery($query);
-					$neg_2 = $db->loadResult();
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'x'";
-					$db->setQuery($query);
-					$neg_3 = $db->loadResult();
-					//neutru series
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'n' AND `data_cal` > '".$last_30."'";
-					$db->setQuery($query);
-					$neu_1 = $db->loadResult();
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'n' AND `data_cal` > '".$last_6."'";
-					$db->setQuery($query);
-					$neu_2 = $db->loadResult();
-					$query = "SELECT count(*) FROM #__sa_calificativ WHERE `dest_id` = '".$id."' AND `tip` = 'n'";
-					$db->setQuery($query);
-					$neu_3 = $db->loadResult();
-					//echo '???? '.$poz_1.' >>> '.$poz_2.' ???? '.$poz_3;
-					?>
-					<tr class="sa_table_feedback_row">
-						<td class="sa_table_dfeedback_cell">
-							<img src="<?php echo $img_path; ?>feedback_pozitiv.png" border="0" />
-							<span class="sa_feed_label"><?php echo JText::_('SA_FEEDBACK_POZITIV'); ?></span>
-						</td>
-						<td class="sa_table_dfeedback_cell"><?php echo $poz_1; ?></td>
-						<td class="sa_table_dfeedback_cell"><?php echo $poz_2; ?></td>
-						<td class="sa_table_dfeedback_cell"><?php echo $poz_3; ?></td>
-					</tr>
-					<tr class="sa_table_feedback_row">
-						<td class="sa_table_dfeedback_cell">
-							<img src="<?php echo $img_path; ?>feedback_neutru.png" border="0" />
-							<span class="sa_feed_label"><?php echo JText::_('SA_FEEDBACK_NEUTRU'); ?></span>
-						</td>
-						<td class="sa_table_dfeedback_cell"><?php echo $neu_1; ?></td>
-						<td class="sa_table_dfeedback_cell"><?php echo $neu_2; ?></td>
-						<td class="sa_table_dfeedback_cell"><?php echo $neu_3; ?></td>
-					</tr>
-					<tr class="sa_table_feedback_row">
-						<td class="sa_table_dfeedback_cell">
-							<img src="<?php echo $img_path; ?>feedback_negativ.png" border="0" />
-							<span class="sa_feed_label"><?php echo JText::_('SA_FEEDBACK_NEGATIV'); ?></span>
-						</td>
-						<td class="sa_table_dfeedback_cell"><?php echo $neg_1; ?></td>
-						<td class="sa_table_dfeedback_cell"><?php echo $neg_2; ?></td>
-						<td class="sa_table_dfeedback_cell"><?php echo $neg_3; ?></td>
-					</tr>
-				</table>
-</div>
-
-
-<script type="text/javascript">
-
-	var isMobile = navigator.userAgent.contains('Mobile');
-	if (!isMobile) {
-		document.getElementById('m_visitors').remove();
-	} else {
-		document.getElementById('wrapper9').getElementsByTagName('h1')[0].remove();
-		document.getElementById('m_table').remove();
-		document.getElementById('gkTopBar').remove();
-		document.getElementById('side_bar').style.display = "none";
-		document.getElementById('content9').style.all = "none";
-		document.write('<style type="text/css" >#content9{width: 100%;' + 
-						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
-						'width: 100% !important;}#gkMainbody table{ width: 100% !important; }' + 
-						'#gkMainbody table tbody, #gkMainbody table thead, #gkMainbody table tfoot{ width: 100% !important; }' + 
-						'span{ display: inline-block; width: 45%; } p{ margin-top: 2px; margin-bottom: 2px;}</style>'
-		);
-	}
-
-</script>
+<?php 
+}
+?>
