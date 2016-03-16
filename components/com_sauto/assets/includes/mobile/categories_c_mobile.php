@@ -133,6 +133,7 @@ $query = "SELECT * FROM #__sa_configurare WHERE `id` = '1'";
 $db->setQuery($query);
 $sconfig = $db->loadObject();
 $query = "SELECT * FROM #__sa_anunturi WHERE `status_anunt` = '1' AND `is_winner` = '0' AND `tip_anunt` = '".$id."' ".$db_oferte." ".$db_piese." ".$db_judete." ".$db_marci." ".$db_orase." ".$db_modele." ORDER BY `id` ";
+echo '<input  type="hidden" id="anunt_id" value="'.$id.'"/>';
 $db->setQuery($query);
 $list = $db->loadObjectList();
 $image_path = JURI::base()."components/com_sauto/assets/users/";	 
@@ -183,8 +184,7 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
         foreach ($list as $l) {
             $image = 'anunt_type_'.$l->tip_anunt.'.png';
             $link_categ = JRoute::_('index.php?option=com_sauto&view=categories&id='.$l->tip_anunt);
-
-            $query = "SELECT `poza`,`alt` FROM #__sa_poze WHERE `id_anunt` = '".$l->id."'";
+			$query = "SELECT `poza`,`alt` FROM #__sa_poze WHERE `id_anunt` = '".$l->id."'";
             $db->setQuery($query);
             $pics = $db->loadObject();
             if ($pics->poza != '') {
@@ -196,14 +196,12 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
             }
             $data_add = explode(" ",$l->data_adaugarii);
             ?>
-            <div class="request-item">
-				<a href="/android/index.php?view=categories&amp;id=4" class="sa_lk_profile">
-					<div class="pic-container" data-id="<?php echo $l->tip_anunt ?>" data-category="categories">
+          	<div class="pic-container" data-id="<?php echo $l->tip_anunt ?>" data-category="categories">
 						<p><?php echo JText::_('SAUTO_TIP_ANUNT_DETAIL'.$l->tip_anunt) ?> </p>
 						<img src="<?php echo $poza ?>" width="80" border="0" />
-					</div>
-				</a>
-                <div class="info-section">
+			</div>	
+			<div class="request-item">
+			     <div class="info-section">
                     <p>
                         <a href="<?php echo $link_anunt ?>"> <?php $l->titlu_anunt ?></a>
                     </p>
@@ -227,19 +225,34 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
                     <p> <?php echo $model ?> </p>
 
                 </div>
+				<?php 
+					$query = "SELECT `p`.`fullname`, `p`.`telefon`, `j`.`judet` FROM #__sa_profiles as `p` JOIN #__sa_judete as `j` ON `p`.`uid` = '".$l->proprietar."' AND `p`.`judet` = `j`.`id`";
+					$db->setQuery($query);
+					//echo $query;
+					$userd = $db->loadObject();
+					$link_profile = JRoute::_('index.php?option=com_sauto&view=public_profile&id='.$l->proprietar);
+					echo '<div class="sa_request_title"><a class="sa_public_profile" href="'.$link_profile.'">'.$userd->fullname.'</a></div>';
+				?>
                 <div class="contact-section">
                     <p><span><?php echo JText::_('SAUTO_DISPLAY_JUDET') ?>: </span> <?php echo $userd->judet ?> </p>
                     <p style="background-color: #509EFF;" data-phone="<?php echo $userd->telefon ?>">
-                        <img src="'.$img_path.'icon_phone.png" border="0" class="sa_phone_img" />
-                        <?php echo JText::_('SAUTO_TELEFON_ASCUNS') ?>
+                        <?php echo '<img src="'.$img_path.'icon_phone.png" border="0" class="sa_phone_img" />'; ?>
+						<span class="sa_phone_span"><?php echo $userd->telefon; ?></span>
                     </p>
-                    <?php
-                    $query = "SELECT count(*) FROM #__sa_raspunsuri WHERE `proprietar` = '".$l->proprietar."' AND `anunt_id` = '".$l->id."'";
-                    $db->setQuery($query);
-                    $oferte = $db->loadResult();
+					<?php
+						$query = "SELECT count(*) FROM #__sa_raspunsuri WHERE `proprietar` = '".$l->proprietar."' AND `anunt_id` = '".$l->id."'";
+						$db->setQuery($query);
+						$oferte = $db->loadResult();
                     ?>
-                    <p><?php echo $oferte == 0 ? JText::_('SAUTO_FARA_OFERTE') : $oferte == 1 ?
-                            JText::_('SAUTO_O_OFERTA') : JText::_('SAUTO_NR_OFERTE'); ?></p>
+                    <p><?php 
+							if ($oferte == 0) {
+								echo JText::_('SAUTO_FARA_OFERTE') ;
+							} else if ($oferte == 1){
+								echo JText::_('SAUTO_O_OFERTA');
+							}else{
+								 echo JText::_('SAUTO_NR_OFERTE');
+							}						  
+					?></p>
                 </div>
             </div>
         <?php }
@@ -252,6 +265,7 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
 </div>
 <script type="text/javascript">
     var isCollapsed = true;
+	var anuntId=document.getElementById("anunt_id").value;
 		document.getElementById('gkTopBar').remove();
 		document.getElementById('side_bar').style.display = "none";
 		document.getElementById('content9').style.all = "none";
@@ -271,11 +285,11 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
         var requestType;
         var obj = {};
         if (key === 'categories'){
-            requestedUrl += 'categories&id=1';
+            requestedUrl += 'categories&id='+anuntId;
             requestType = "GET";
             obj["id"] = value;
         } else {
-           requestedUrl += 'categories&id=1';
+           requestedUrl += 'categories&id='+anuntId;
             requestType = "POST";
             obj[key] = value;
         }
