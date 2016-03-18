@@ -99,16 +99,16 @@ if ($types->tip_cont == 1) {
           <span class="menu-option-text"> Inchide Aplicatia </span>
         </div>
     </div>
-
-
-	<b>
-	<h1><?php echo $profil->companie; ?></h1>
-	 </b>
-	<p><span> Reprezentant: </span> <?php echo $profil->reprezentant; ?></p>
+	<p><span> Reprezentant: </span> <?php
+				if ($tip_cont == 0) {
+					echo $profil->fullname; 
+				} else {
+					echo $profil->companie;	
+				}?></p>
 	<p><span> Oras: </span>	 <?php  echo $profil->localitate; ?></p>
 	<p><span> Judet: </span>    <?php  echo $profil->judet; ?></p>
 	<p><span> Adresa: </span>   <?php echo $profil->adresa; ?></p>
-	<p><span> Data Inregistrare: </span><?php echo $data_inreg[0]; ?></p>
+	<p><span> Data Inregistrare: </span><?php 	$data_inreg = explode(" ", $profil->registerDate);echo $data_inreg[0]; ?></p>
 	<p><span> Calificativ: </span> <?php  echo round(100*$feeds,2).'% ('.$all.')';?></p>
 	<table class="sa_table_class">
 					<tr class="sa_table_feedback_row">

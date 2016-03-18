@@ -1,24 +1,50 @@
+<style type="text/css">
+#detalii_firma{
+	
+		float:right;
+}
+p {
+     margin: 0.5em 2% 0.5em;
+}
+.sa_reported_div{
+	width:36%;
+}
+.sa_phone {
+    background-color: #509eff;
+    /* padding: 2px; */
+    float: right;
+    margin-right: 2%;
+}
+.sa_min_width {
+    width: 25%;
+}
+form {
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+	  .pic-container{
+        width: 45%;
+        display: inline-block;
+    }
+    .info-section{
+         width: 50%;
+        display: inline-block;
+    }
+    @media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+</style>
 <?php
-/**
- * @package    sauto
- * @subpackage Views
- * @author     Dacian Strain {@link http://shop.elbase.eu}
- * @author     Created on 17-Nov-2013
- * @license    GNU/GPL
- */
-
-//-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/comment_list_c_mobile.php');
-}else{
 $user =& JFactory::getUser();
 $uid = $user->id;
 
 
 $document = JFactory::getDocument();
-require("toggle_js.php");
+require("toggle_js_mobile.php");
 $document->addScriptDeclaration ($js_code);
 
 $anunt_id =& JRequest::getVar( 'anunt_id', '', 'post', 'string' );
@@ -37,24 +63,19 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 $tip = 'client';
 $multiple_id = 0;
 $r_id = '';
-require("function_load_img.php");
-require("function_report.php");
-require("function_form_comment.php");
+require("function_load_img_mobile.php");
+require("function_report_mobile.php");
+require("function_form_comment_mobile.php");
 $link_comment = JRoute::_('index.php?option=com_sauto&view=add_comment'); 
 
 $link_categ = JRoute::_('index.php?option=com_sauto&view=categories&id='.$rezult->tip_anunt);	
 $width = 'style="width:800px;"';
 ?>
-<table class="sa_table_class">
-	<tr class="sa_table_row">
-		<td class="sa_table_cell" valign="top" <?php echo $width; ?>>
-		
-<table width="100%" class="sa_table_class">
-	<tr class="sa_table_row">
-		<td colspan="2" class="sa_table_cell"><h1><?php echo $rezult->titlu_anunt; ?></h1></td>
-	</tr>
-	<tr class="sa_table_row">
-		<td valign="top" width="50%" class="sa_table_cell">
+<div id="m_visitors">
+	<?php
+require("menu_filter.php");
+	?>
+<div id="hidden-values">
 		<?php
 		//echo $rezult->tip_anunt.'<br />';
 		$data_adaugarii = explode(" ", $rezult->data_adaugarii);
@@ -66,49 +87,52 @@ $width = 'style="width:800px;"';
 		echo JText::_('SAUTO_CATEGORY').': <a href="'.$link_categ.'">'.$categorie.'</a><br />';
 		if ($rezult->tip_anunt == 1) {
 			//1
-			require("display_request_1.php");
+			require("display_request_1_mobile.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 2) {
 			//2
-			require("display_request_2.php");
+			require("display_request_2_mobile.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 3) {
 			//3
-			require("display_request_3.php");
+			require("display_request_3_mobile.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 4) {
 			//4
-			require("display_request_4.php");
+			require("display_request_4_mobile.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 5) {
 			//5
 		} elseif ($rezult->tip_anunt == 6) {
 			//6
-			require("display_request_6.php");
+			require("display_request_6_mobile.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 7) {
 			//7
 		} elseif ($rezult->tip_anunt == 8) {
 			//8
-			require("display_request_8.php");
+			require("display_request_8_mobile.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 9) {
 			//9
-			require("display_request_9.php");
+			require("display_request_9_mobile.php");
 			view_detail($rezult, $tip);
 		} 
 		?>
-		</td>
-		<td valign="top" class="sa_table_cell">
-			<?php
-			require("display_proprietar.php");
-			view_proprietar($rezult->proprietar, $tip);
-			?>
-		</td>
-	</tr>
-	<tr class="sa_table_row">
-		<td valign="bottom" class="sa_table_cell"><?php echo JText::_('SAUTO_MESAJ_CERERE'); ?></td>
-		<td valign="top" class="sa_table_cell">
+	</div>
+		<?php
+		if ($tip == 1){
+			echo "<h1>Detalii Companie</h1>";
+		} else {
+			echo "<h1>Detalii Client</h1>";
+		}
+		require('display_proprietar_mobile.php');
+		getMobileDetails($rezult->proprietar, $tip, $id, '');	 
+	?>
+<div id="main-container">
+		<p><strong>Detalii Cerere</strong></p>
+	</div>
+
 		<?php
 		$query = "SELECT count(*) FROM #__sa_poze WHERE `id_anunt` = '".$anunt_id."'";
 		$db->setQuery($query);
@@ -117,58 +141,45 @@ $width = 'style="width:800px;"';
 			//avem poze
 			require("display_pictures.php");
 			view_pictures($anunt_id, $rezult->proprietar);
-			//echo 'avem poze > '.$total;
 		}
 		?>
-		</td>
-	</tr>
-	<tr class="sa_table_row">
-		<td colspan="2" class="sa_table_cell">
-		<?php echo $rezult->anunt; ?>
-		</td>
-	</tr>
-	<tr class="sa_table_row">
-		<td colspan="2" class="sa_table_cell" align="right">
+		<p><?php echo $rezult->anunt; ?></p>
 			<?php 
 			report_now($rezult->raportat, $anunt_id, $uid);
 			?>
-		</td>
-	</tr>
-	<tr class="sa_table_row">
-		<td colspan="2" class="sa_table_cell">
-		<div style="margin-top:20px;">
-			<table width="100%" class="sa_table_class">
+<div id="firma" style="width:100%;">
 				<?php 
-				//preluam ofertele facute
-				$img_path2 = JURI::base()."components/com_sauto/assets/users/";
-	
-$query = "SELECT `p`.`companie`, `p`.`calificative`, `p`.`poza`, `p`.`telefon`, `l`.`localitate`, `a`.`abonament` 
-		FROM #__sa_profiles as `p` 
-		JOIN #__sa_localitati as `l` 
-		JOIN #__sa_abonament as `a` 
-		ON `p`.`uid` = '".$firma."' AND `p`.`localitate` = `l`.`id` AND `p`.`abonament` = `a`.`id`";
-				$db->setQuery($query);
-				$rasp = $db->loadObject();
-				//print_r($rasp);
-				$link_profile = JRoute::_('index.php?option=com_sauto&view=public_profile&id='.$firma);
-				?>
-				<tr class="sa_table_row">
-					<td valign="top" width="110" class="sa_table_cell">
+							//preluam ofertele facute
+					$img_path2 = JURI::base()."components/com_sauto/assets/users/";
+					$query = "SELECT `p`.`companie`, `p`.`calificative`, `p`.`poza`, `p`.`telefon`, `l`.`localitate`, `a`.`abonament` 
+					FROM #__sa_profiles as `p` 
+					JOIN #__sa_localitati as `l` 
+					JOIN #__sa_abonament as `a` 
+					ON `p`.`uid` = '".$firma."' AND `p`.`localitate` = `l`.`id` AND `p`.`abonament` = `a`.`id`";
+							$db->setQuery($query);
+							$r = $db->loadObject();
+							$link_profile = JRoute::_('index.php?option=com_sauto&view=public_profile&id='.$firma);
+								if ($r->poza == '') {
+											//fara avatar
+											$poza=$img_path.'fi_avatar.png';
+										} else {
+											//cu avatar
+											$poza=$img_path2.$firma.'/'.$r->poza;
+										}
+					echo '<hr class="sauto_hr"/>';
+		?>
+<div class="request-item">
+				<div class="pic-container" data-id="<?php echo $r->companie ?>" data-category="categories">
+					<img src="<?php echo $poza ?>" width="80" border="0" />
+				</div>	
+			     <div class="info-section">
+                    <p>	<?php 	echo '<a class="sa_public_profile" href="'.$link_profile.'">'.$r->companie.'</a>';	?></p>
+					<p> <?php echo JText::_('SAUTO_CITY_TITLE').': '.$r->localitate.' '; ?> </p>
+					
+					<p> <?php echo JText::_('SAUTO_CALIFICATIV_TITLE').': '.$r->calificative.'%'; ?> </p>
+					<p class="sa_tip_abon"> <?php echo JText::_('SAUTO_TIP_VANZATOR').': '.$r->abonament; ?> </p>
+					<p class="sa_mesaj_oferta"> <?php echo JText::_('SAUTO_MESAJ_OFERTA_TITLE'); ?> </p>
 					<?php
-					if ($rasp->poza == '') {
-								//fara avatar
-								echo '<img src="'.$img_path.'fi_avatar.png" width="100" border="0" />';
-							} else {
-								//cu avatar
-								echo '<img src="'.$img_path2.$firma.'/'.$rasp->poza.'" width="100" border="0" />';
-							}
-					?>
-					</td>
-					<td valign="top" class="sa_table_cell">
-					<?php
-					echo '<div><a class="sa_public_profile" href="'.$link_profile.'">'.$rasp->companie.'</a></div>';
-					echo '<div>'.JText::_('SAUTO_CITY_TITLE').': '.$rasp->localitate.'</div>';
-								
 					//obtin oferta
 					$query = "SELECT `r`.`mesaj`, `r`.`data_adaugarii`, `r`.`pret_oferit`, `r`.`moneda`, `m`.`m_scurt`  
 						FROM #__sa_raspunsuri AS `r` JOIN #__sa_moneda AS `m` 
@@ -176,65 +187,62 @@ $query = "SELECT `p`.`companie`, `p`.`calificative`, `p`.`poza`, `p`.`telefon`, 
 						AND `r`.`firma` = '".$firma."' AND `r`.`moneda` = `m`.`id`";
 					$db->setQuery($query);
 					//echo $query;
-					$oferta = $db->loadObject();
-						echo '<div>'.$oferta->mesaj.'</div>';
-						
+					$r = $db->loadObject();
 					?>
-					</td>
-					<td valign="top" align="center">
-						<div class="sa_tip_abon">
-							<?php echo JText::_('SAUTO_TIP_VANZATOR').': '.$rasp->abonament; ?>
-						</div>
+					<p> <?php echo $r->mesaj; ?> </p>
+					<div style="display:inline;">
 						<?php
-						echo '<div>'.JText::_('SAUTO_CALIFICATIV_TITLE').' '.$rasp->calificative.'%</div>';
-						echo '<div>'.JText::_('SAUTO_PRET_OFERTA').' '.$oferta->pret_oferit.' '.$oferta->m_scurt.'</div>';
+						if ($rezult->proprietar == $uid) {
+								echo '<p>'.JText::_('SAUTO_PRET_TITLE').': '.$r->pret_oferit.' '.$r->m_scurt.'</p>';
+						} else {
+								echo '<p>'.JText::_('SAUTO_PRET_TITLE').': '.JTEXT::_('SA_VIZIBIL_DOAR_PROPRIETARULUI').'</p>';
+								}
+						$data = explode(" ", $r->data_adaugarii);
 						?>
-					</td>
-				</tr>
-				<tr class="sa_table_row">
-					<td colspan="3" class="sa_table_cell">
+					</div>
+					 <p>
+                        <span><?php echo JText::_('SAUTO_DATA_TITLE'); ?>: </span><?php echo $data[0]; ?>
+                    </p>
+					<div style="clear:both;"></div>
+					<?php
+						$display_add_coment = 0;
+						if ($rezult->proprietar == $uid) 
+						{		if ($rezult->is_winner == 0) {
+									$display_add_coment = 1;
+								}else {
+										if ($r->status_raspuns == 1) {
+														$display_add_coment = 1;	
+																	 }
+									  }
+						}
+					?>
+                </div>
+
+</div>				
+</div>
+						
+						
 						<div class="sa_demarcare"><hr class="sauto_hr" /></div>
-						<table width="100%" class="sa_table_class">
 					<?php
 $query = "SELECT `c`.`id`, `c`.`raspuns`, `c`.`data_adaugarii`, `c`.`mesaj`, `p`.`fullname`, `p`.`poza`, `p`.`companie` 
 FROM #__sa_comentarii as `c` JOIN #__sa_profiles as `p` ON `c`.`anunt_id` = '".$anunt_id."' AND `c`.`proprietar` = `p`.`uid` 
 AND `c`.`proprietar` = '".$proprietar."' AND `c`.`companie` = '".$firma."' ORDER BY `c`.`ordonare` ASC";
 					$db->setQuery($query);
-					$lists = $db->loadObjectList();
-					
+					$lists = $db->loadObjectList();		
 					//obtin datele companiei
 					$query = "SELECT `p`.`companie`, `p`.`poza` FROM #__sa_profiles as `p` WHERE `uid` = '".$firma."'";
 					$db->setQuery($query);
 					$company = $db->loadObject();
 					foreach ($lists as $l) {
-						if ($style == ' sa-row1 ') { 
-							$style = ' sa-row0 '; 
-						} else { 
-							$style = ' sa-row1 '; 
-						}
 						if ($l->raspuns == 0) {
 							//proprietar
-							echo '<tr class="sa_table_row '.$style.'"><td colspan="4" align="right" class="sa_table_cell"><div class="sa_client_comment">'.JText::_('SAUTO_COMENTARIU_CLIENT').': </div></td></tr>';
-							echo '<tr class="sa_table_row '.$style.'">';
-							echo '<td align="right" colspan="3" class="sa_table_cell">';
+							echo '<div class="sa_client_comment">'.JText::_('SAUTO_COMENTARIU_CLIENT').': </div>';
 							echo '<div style="display:inline;">';
 							echo '<div style="float:left;">'.$l->data_adaugarii.'</div>';
 							echo '<div class="sa_link_profile" style="float:right;"><a class="sa_public_profile" href="'.$link_profile.'">'.$l->fullname.'</a></div>';
 							echo '</div>';
 							echo '<div style="clear:both;"></div>';
-							echo '</td>';
-							echo '<td rowspan="2" width="1">';
-							/*if ($l->poza == '') {
-								//fara avatar
-								echo '<img src="'.$img_path.'fi_avatar.png" width="100" border="0" />';
-							} else {
-								//cu avatar
-								echo '<img src="'.$img_path2.$proprietar.'/'.$l->poza.'" width="100" border="0" />';
-							}*/
-							echo '</td>';
-							echo '</tr>';
-							echo '<tr class="sa_table_row '.$style.'"><td colspan="3" class="sa_table_cell">'.$l->mesaj.'</td></tr>';
-							echo '<tr class="sa_table_row '.$style.'"><td colspan="4" class="sa_table_cell">';
+							echo '<p>'.$l->mesaj.'</p>';
 							$query = "SELECT count(*) FROM #__sa_poze_comentarii WHERE `com_id` = '".$l->id."'";
 							$db->setQuery($query);
 							$totals = $db->loadResult();
@@ -255,30 +263,15 @@ AND `c`.`proprietar` = '".$proprietar."' AND `c`.`companie` = '".$firma."' ORDER
 								echo '</div>';
 								echo '<div style="clear:both;"></div>';
 							}
-							echo '</td></tr>';
 						} else {
 							//companie
-							echo '<tr class="sa_table_row '.$style.'"><td colspan="4" align="left" class="sa_table_cell"><div class="sa_client_comment">'.JText::_('SAUTO_COMENTARIU_DEALER').': </div></td></tr>';
-							echo '<tr class="sa_table_row '.$style.'">';
-							echo '<td rowspan="2" width="1" class="sa_table_cell">';
-							/*if ($company->poza == '') {
-								//fara avatar
-								echo '<img src="'.$img_path.'fi_avatar.png" border="0" width="100" />';
-							} else {
-								//cu avatar
-								echo '<img src="'.$img_path2.$firma.'/'.$company->poza.'" width="100" border="0" />';
-							}*/
-							echo '</td>';
-							echo '<td align="left" colspan="3" class="sa_table_cell">';
+							echo '<div class="sa_client_comment">'.JText::_('SAUTO_COMENTARIU_DEALER').': </div>';
 							echo '<div style="display:inline;">';
 							echo '<div class="sa_link_profile" style="float:left;"><a class="sa_public_profile" href="'.$link_profile.'">'.$company->companie.'</a></div>';
 							echo '<div style="float:right;">'.$l->data_adaugarii.'</div>';
 							echo '</div>';
 							echo '<div style="clear:both;"></div>';
-							echo '</td>';
-							echo '</tr>';
-							echo '<tr class="sa_table_row '.$style.'"><td colspan="3" class="sa_table_cell">'.$l->mesaj.'</td></tr>';
-							echo '<tr class="sa_table_row '.$style.'"><td colspan="4" class="sa_table_cell">';
+							echo '<p>'.$l->mesaj.'</p>';
 							$query = "SELECT count(*) FROM #__sa_poze_comentarii WHERE `com_id` = '".$l->id."'";
 							$db->setQuery($query);
 							$totals = $db->loadResult();
@@ -301,45 +294,27 @@ AND `c`.`proprietar` = '".$proprietar."' AND `c`.`companie` = '".$firma."' ORDER
 								echo '</div>';
 								echo '<div style="clear:both;"></div>';
 							}
-							echo '</td></tr>';
+
 						}
 					}
 					?>
-					<tr class="sa_table_row">
-							<td colspan="4" class="sa_table_cell">
-						<hr class="sauto_hr" />
-						</td>
-						</tr>	
+					<hr class="sauto_hr" />
 					<?php
 					if ($rezult->is_winner == 0) { 
 					?>
-						<tr class="sa_table_row">
-							<td colspan="4" class="sa_table_cell">
-								<div class="sa_comment_reply"><?php echo JText::_('SAUTO_COMMENT_REPLY'); ?></div></td>
-						</tr>
-						<tr class="sa_table_row">
-							<td colspan="4" class="sa_table_cell">
-	
+							<div class="sa_comment_reply"><?php echo JText::_('SAUTO_COMMENT_REPLY'); ?></div>
 							<form method="post" action="<?php echo $link_comment; ?>" enctype="multipart/form-data" name="submit_comm" id="submit_comm">
 							<?php
 							form_comment($r_id, $multiple_id, $anunt_id, $proprietar, $firma);
 							echo loadImg($r_id, $multiple_id); ?>					
 	</form>
-		
-	<div onClick="document.forms['submit_comm'].submit();" class="sa_add_comment sa_submit_form sa_hover">
+<div onClick="document.forms['submit_comm'].submit();" class="sa_add_comment sa_submit_form sa_hover">
 	<?php echo JText::_('SAUTO_COMMENT_BUTTON'); ?>
 	</div>
-							</td>
-						</tr>
 						<?php } else {
 								if ($rezult->uid_winner == $firma) {
 								?>
-								<tr class="sa_table_row">
-							<td colspan="4" class="sa_table_cell"><div class="sa_comment_reply"><?php echo JText::_('SAUTO_COMMENT_REPLY'); ?></div></td>
-						</tr>
-						<tr class="sa_table_row">
-							<td colspan="4" class="sa_table_cell">
-
+<div class="sa_comment_reply"><?php echo JText::_('SAUTO_COMMENT_REPLY'); ?></div>
 <form method="post" action="<?php echo $link_comment; ?>" enctype="multipart/form-data" name="submit_comm" id="submit_comm">
 <?php
 form_comment($r_id, $multiple_id, $anunt_id, $proprietar, $firma);
@@ -350,17 +325,11 @@ echo loadImg($r_id, $multiple_id);
 	<div onClick="document.forms['submit_comm'].submit();" class="sa_add_comment sa_submit_form sa_hover">
 	<?php echo JText::_('SAUTO_COMMENT_BUTTON'); ?>
 	</div>
-
-							</td>
-						</tr>
 								<?php
 								}
 							} ?>
-						<tr class="sa_table_row">
-							<td colspan="2" class="sa_table_cell">
-							<button onclick="window.history.go(-1)"><?php echo JText::_('SAUTO_BACK_ANUNT_BUTTON'); ?></button>
-							</td>
-							<td colspan="2" class="sa_table_cell" align="right">
+
+							<button style="float:right"onclick="window.history.go(-1)"><?php echo JText::_('SAUTO_BACK_ANUNT_BUTTON'); ?></button>
 								<?php
 								//verificam daca sunt comentarii necitite
 								$query = "SELECT count(*) FROM #__sa_comentarii WHERE `proprietar` = '".$uid."' AND `raspuns` = '1' AND `readed_c` = '0'";
@@ -373,31 +342,30 @@ echo loadImg($r_id, $multiple_id);
 									echo '</div>';
 								}
 								?>
-							</td>
-						</tr>
-						</table>
-					</td>
-				</tr>
-			</table>
-		</div>	
-		</td>
-	</tr>
-</table>
-</td>
-		<td class="sa_table_cell" valign="top" align="right">
-			<div style="float:right;" class="sa_allrequest_r">
-			<?php
-			//incarcam module in functie de pagina accesata
-			echo '<div class="sa_reclama_right">';
-				$pozitionare = 'l';
-				$categ = '';
-				echo showAds($pozitionare, $categ);
-			echo '</div>';
-			//echo '<div>'.$show_side_content.'</div>';	
-		?>
-		
-			</div>
-		</td>
-	</tr>
-</table>
-<?php } ?>
+</div>
+<script type="text/javascript">
+		var element = document.getElementById('hidden-values');
+		//element.getElementsByClassName('m_header')[0].remove();
+		var textValues = element.innerHTML.split('<br>');
+		var appendElement = '';
+		for(var i = 0;i < textValues.length - 1; i++){
+			var splitValues = textValues[i].split(':');
+			var appendElement = '<p><span class="some-class">' + splitValues[0] + ': </span>' + splitValues[1] + '</p>';
+			document.getElementById('main-container').innerHTML += appendElement;
+		}
+		document.getElementById('hidden-values').remove();
+		document.getElementById('gkTopBar').remove();
+		document.getElementsByTagName('center')[0].remove();
+		document.getElementById('wrapper9').getElementsByTagName('h1')[0].remove();
+		document.getElementById('m_table').remove();
+		document.getElementById('side_bar').style.display = "none";
+		document.getElementById('content9').style.all = "none";
+		document.write('<style type="text/css" >#content9{width: 100%;' + 
+						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
+						'width: 100% !important;}#gkMainbody table{ width: 100% !important; }' + 
+						'#gkMainbody table tbody, #gkMainbody table thead, #gkMainbody table tfoot{ width: 100% !important; }' + 
+						'span{ display: inline-block; width: 45%; } p{ margin-top: 2px; margin-bottom: 2px;}</style>'
+		);
+	
+
+</script>

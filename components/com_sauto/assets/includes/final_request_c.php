@@ -9,7 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/final_request_c_mobile.php');
+}else{
 
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
@@ -550,7 +553,7 @@ echo '<br /><br />';
 						?>
                 </div>
             </div>
-        <?php }
+<?php }}
         ?>
     </div>
 </div>

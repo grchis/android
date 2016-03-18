@@ -216,13 +216,13 @@ require("menu_filter.php");
 				</div>	
 			     <div class="info-section">
                     <p>
-                        <a class="sa_public_profile" href="<?php echo $link_profile ?>"> <?php $r->companie; ?></a>
-                    </p>
-					<?php
+					   <?php 
+						echo '<a class="sa_public_profile" href="'.$link_profile.'">'.$r->companie.'</a>';
 						if ($r->f_principal == 0) {
-				echo '<p>'.JText::sprintf('SAUTO_FILIALA_REPREZENTATA DE', $r->reprezentant).'</p>';
-							}
-					?>
+							echo JText::sprintf('SAUTO_FILIALA_REPREZENTATA DE', $r->reprezentant);
+						}
+						?>
+					</p>
 					<p> <?php echo JText::_('SAUTO_CITY_TITLE').': '.$r->localitate.' '; ?> </p>
 					
 					<p> <?php echo JText::_('SAUTO_CALIFICATIV_TITLE').': '.$r->calificative.'%'; ?> </p>
