@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/all_mobile.php');
+}else{
 $id =& JRequest::getVar( 'id', '', 'get', 'string' );
 
 
@@ -301,3 +305,6 @@ echo '<br /><br />';
 		</td>
 	</tr>
 </table>
+<?php 
+}
+?>

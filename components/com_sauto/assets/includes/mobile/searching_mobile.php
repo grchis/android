@@ -145,25 +145,4 @@ if ($total == 0) {
 						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
 						'width: 100% !important;}</style>'
 		);
-	jQuery('#menu-icon').on('click', toggleMenu);
-
-		jQuery('.menu-option-text').on('click', redirectToMenuOption);
-	
-	function toggleMenu () {
-	   if (isMenuCollapsed){
-	        isMenuCollapsed = false;
-	        jQuery('#main-menu').show(500);
-	    }
-	    else{
-	        isMenuCollapsed = true;
-	        jQuery('#main-menu').hide(500);
-	    }
-	}
-
-	function redirectToMenuOption (event) {
-  		event.preventDefault();
-  		event.stopPropagation();
-
-  		window.location.href = jQuery(event).data('href');
-	}
 </script>
