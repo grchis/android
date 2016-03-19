@@ -53,8 +53,6 @@ if ($total == 0) {
 <?php
 require_once('menu_filter.php');
 ?>
-	<h1>Oferte Finalizate</h1>
-	
     <div id="main-container">
         <?php
         $i=1;
@@ -80,7 +78,7 @@ require_once('menu_filter.php');
             $data_add = explode(" ",$l->data_adaugarii);
             ?>
             <div class="request-item">
-				<a href="/android/index.php?view=categories&amp;id=4" class="sa_lk_profile">
+				<a href="/android/index.php?view=categories&id=4" class="sa_lk_profile">
 					<div class="pic-container" data-id="<?php echo $l->tip_anunt ?>" data-category="categories">
 						<p><?php echo JText::_('SAUTO_TIP_ANUNT_DETAIL'.$l->tip_anunt) ?> </p>
 						<img src="<?php echo $poza ?>" width="80" border="0" />
@@ -182,15 +180,14 @@ require_once('menu_filter.php');
 						?>
                 </div>
             </div>
+			    </div>
 	<?php }}
         ?>
-    </div>
+
 </div>
 
 
 <script>
-		var isCollapsed = true;
-		jQuery('.m_table').remove();
 		 if (document.getElementById('side_bar')){
 			document.getElementById('side_bar').remove();
 		 }
@@ -220,15 +217,4 @@ require_once('menu_filter.php');
 						'width: 100% !important;}</style>'
 		);
 		document.write('<style type="text/css">@media="(max-width: 340px)"#gkMainbody table { width: 540px!important; display: block!important;  padding: 30px 0 20px 0;  overflow: hide;  max-width: 100%;</style>');s
-function toggleMenu()
-{
-	if (isCollapsed){
-		isCollapsed = false;
-		jQuery('#main-menu').show(500);
-	}
-	else{
-		isCollapsed = true;
-		jQuery('#main-menu').hide(500);
-	}
-}
 </script>
