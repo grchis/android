@@ -3,34 +3,34 @@
 	</div>
 
 	<div id="main-menu" style="display: none;">
-        <div class="menu-option" data-href="/android/index.php?option=com_sauto&view=add_request">
+        <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_requests.png" border="0">
-          <span class="menu-option-text"> Adauga cerere </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=add_request"> Adauga cerere </span>
         </div>
 
-        <div class="menu-option" data-href="/android/index.php?option=com_sauto&amp;view=search">
+        <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_my_request.png" border="0">
-          <span class="menu-option-text"> Cauta firme </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=search"> Cauta firme </span>
         </div>
 
-        <div class="menu-option" data-href="/android/index.php?view=final_request">
+        <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_final_request.png" border="0">
-          <span class="menu-option-text"> Cererile mele </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=my_request"> Cererile mele </span>
         </div>
 
-        <div class="menu-option" data-href="/android/index.php?option=com_sauto&amp;view=final_request">
+        <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_alerts.png" border="0">
-          <span class="menu-option-text"> Cereri finalizate </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=final_request"> Cereri finalizate </span>
         </div>
 
-        <div class="menu-option" data-href="/android/index.php/component/sauto/?view=edit_profile">
+        <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_edit_profile.png" border="0">
-          <span class="menu-option-text"> Editare profil </span>
+          <span class="menu-option-text" data-href="/android/index.php/component/sauto/?view=edit_profile"> Editare profil </span>
         </div>
 
-        <div class="menu-option" data-href="/android/index.php?option=com_sauto&amp;view=logout">
+        <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_logout.png" border="0">
-          <span class="menu-option-text"> Inchide Aplicatia </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=logout"> Inchide Aplicatia </span>
         </div>
     </div>
 <script type="text/javascript">
@@ -69,10 +69,10 @@
 		}
 
 	function redirectToMenuOption (event) {
-  		event.preventDefault();
-  		event.stopPropagation();
-
-  		window.location.href = jQuery(event).data('href');
+		event.preventDefault();
+		event.stopPropagation();
+		var url=jQuery(event.target).data("href");
+   		window.location.href = url;
 	}
 	
 </script>

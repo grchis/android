@@ -1,3 +1,33 @@
+<style type="text/css">
+.action-button{
+	text-align: center;
+	width: 30%;
+	max-width: 100px;
+	display: inline-block;
+	background-color: #509EFF;
+	font-size: 1em;
+	color: white;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+h1{
+display:none;
+}
+.ellipse{
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
+a{
+	color: white;
+}
+@media screen and (max-width: 1210px){
+    .gkPage {
+    padding: 0 !important;
+    }
+}
+</style>
 <?php
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
@@ -111,36 +141,7 @@ require_once('menu_filter.php');
 ?>
 </div>
 
-<style type="text/css">
-.action-button{
-	text-align: center;
-	width: 30%;
-	max-width: 100px;
-	display: inline-block;
-	background-color: #509EFF;
-	font-size: 1em;
-	color: white;
-	padding-top: 4px;
-	padding-bottom: 4px;
-}
-h1{
-display:none;
-}
-.ellipse{
-	white-space: nowrap; 
-	overflow: hidden; 
-	text-overflow: ellipsis;
-}
 
-a{
-	color: white;
-}
-@media screen and (max-width: 1210px){
-    .gkPage {
-    padding: 0 !important;
-    }
-}
-</style>
 <script type="text/javascript">
 		document.getElementById('side_bar').remove();
 		document.getElementById('gkTopBar').remove();

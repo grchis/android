@@ -1,3 +1,15 @@
+<style type="text/css">
+form {
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+</style>
 <div id="m_visitors" style="background-color:#F9F9F9">
 	<?php require_once('menu_filter.php');?>
 	<div class = "main-container">
@@ -109,15 +121,3 @@ document.getElementById('submit').addEventListener('click', function (event) {
 
 </script>
 
-<style type="text/css">
-form {
-    margin: 0;
-    padding-left: 2%;
-    padding-right: 2%;
-}
-	@media screen and (max-width: 1210px){
-	    .gkPage {
-	        padding: 0 !important;
-	    }
-	}
-</style>

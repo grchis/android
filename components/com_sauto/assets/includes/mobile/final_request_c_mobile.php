@@ -131,7 +131,9 @@ require_once('menu_filter.php');
 							echo '<img style="margin-left: 6%;" src="'.$img_path.$calif_n.'" />';
 							if ($calif->tip == 'x') { $calif_x = 'feedback_negativ.png'; } else { $calif_x = 'feedback_negativ_gri.png'; }
 							echo '<img style="margin-left: 6%;" src="'.$img_path.$calif_x.'" />';
-						} else { ?>
+						} else {
+						$link_calificativ = JRoute::_('index.php?option=com_sauto&view=calificativ');
+						?>
 							<form action="<?php echo $link_calificativ; ?>" method="post" name="calificativ_<?php echo $l->id; ?>" id="calificativ_<?php echo $l->id; ?>">
 								<textarea name="calificativ_mess" cols="15" rows="1"></textarea>
 								<div>

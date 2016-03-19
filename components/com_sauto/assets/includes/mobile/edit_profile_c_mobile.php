@@ -1,3 +1,10 @@
+<style type="text/css">
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+</style>
 <?php
 defined('_JEXEC') || die('=;)');
 
@@ -158,10 +165,3 @@ $total_fields = 7;
 		);
 
 </script>
-<style type="text/css">
-	@media screen and (max-width: 1210px){
-	    .gkPage {
-	        padding: 0 !important;
-	    }
-	}
-</style>

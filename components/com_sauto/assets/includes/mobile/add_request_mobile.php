@@ -1,3 +1,10 @@
+<style type="text/css">
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+</style>
 <?php
 defined('_JEXEC') || die('=;)');
 $db = JFactory::getDbo();
@@ -62,10 +69,4 @@ require_once('menu_filter.php');
 
 </script>
 
-<style type="text/css">
-	@media screen and (max-width: 1210px){
-	    .gkPage {
-	        padding: 0 !important;
-	    }
-	}
-</style>
+
