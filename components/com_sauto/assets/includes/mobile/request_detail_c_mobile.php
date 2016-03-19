@@ -3,6 +3,11 @@
 	
 		float:right;
 }
+.sa_submit_form{
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+}
 p {
      margin: 0.5em 2% 0.5em;
 }
@@ -27,9 +32,19 @@ form {
         width: 15%;
         display: inline-block;
     }
-    .info-section{
+    .info-section1{
          width: 45%;
         display: inline-block;
+    }
+	    .info-section2{
+        width: 35%;
+        display: inline-block;
+        vertical-align: top;
+    }
+	    .contact-section{
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
     }
     @media screen and (max-width: 1210px){
 	    .gkPage {
@@ -214,7 +229,7 @@ require("menu_filter.php");
 				<div class="pic-container" data-id="<?php echo $r->companie ?>" data-category="categories">
 					<img src="<?php echo $poza ?>" width="80" border="0" />
 				</div>	
-			     <div class="info-section">
+			     <div class="info-section1">
                     <p>
 					   <?php 
 						echo '<a class="sa_public_profile" href="'.$link_profile.'">'.$r->companie.'</a>';
@@ -227,6 +242,8 @@ require("menu_filter.php");
 					
 					<p> <?php echo JText::_('SAUTO_CALIFICATIV_TITLE').': '.$r->calificative.'%'; ?> </p>
 					<p class="sa_tip_abon"> <?php echo JText::_('SAUTO_TIP_VANZATOR').': '.$r->abonament; ?> </p>
+					</div>
+					<div class="info-section2">
 					<p class="sa_mesaj_oferta"> <?php echo JText::_('SAUTO_MESAJ_OFERTA_TITLE'); ?> </p>
 					<p> <?php echo $r->mesaj; ?> </p>
 					<div style="display:inline;">
