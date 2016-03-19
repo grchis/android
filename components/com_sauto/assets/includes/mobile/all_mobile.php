@@ -111,14 +111,14 @@ require_once("menu_filter.php");
 				$query = "SELECT `model_auto`, `published` FROM #__sa_model_auto WHERE `id` = '".$l->model_auto."'";
 				$db->setQuery($query);
 				$model = $db->loadObject();
-					echo '<p style="position:relative;float:left;">'.JText::_('SAUTO_SHOW_MARCA').' ';
+					echo '<p style="position:relative">'.JText::_('SAUTO_SHOW_MARCA').' ';
 						if ($marca->published == 1) {
 							echo $marca->marca_auto;
 						} else {
 							echo JText::_('SAUTO_MARCA_NEPUBLICATA');
 						}
 					echo '</p>';
-					echo '<p style="position:relative;float:right;">'.JText::_('SAUTO_SHOW_MODEL').' ';
+					echo '<p style="position:relative">'.JText::_('SAUTO_SHOW_MODEL').' ';
 						if ($model->published == 1) {
 							echo $model->model_auto;
 						} else {
