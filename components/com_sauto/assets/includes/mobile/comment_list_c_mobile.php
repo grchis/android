@@ -103,6 +103,8 @@ require("menu_filter.php");
 			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 5) {
 			//5
+			require("display_request_5_mobile.php");
+			view_detail($rezult, $tip);
 		} elseif ($rezult->tip_anunt == 6) {
 			//6
 			require("display_request_6_mobile.php");
@@ -139,7 +141,7 @@ require("menu_filter.php");
 		$total = $db->loadResult();
 		if ($total != 0) {
 			//avem poze
-			require("display_pictures.php");
+			require("display_pictures_mobile.php");
 			view_pictures($anunt_id, $rezult->proprietar);
 		}
 		?>
@@ -344,8 +346,8 @@ echo loadImg($r_id, $multiple_id);
 								?>
 </div>
 <script type="text/javascript">
+	window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')
 		var element = document.getElementById('hidden-values');
-		//element.getElementsByClassName('m_header')[0].remove();
 		var textValues = element.innerHTML.split('<br>');
 		var appendElement = '';
 		for(var i = 0;i < textValues.length - 1; i++){
