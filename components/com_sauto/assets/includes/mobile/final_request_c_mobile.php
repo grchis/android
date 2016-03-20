@@ -78,7 +78,7 @@ require_once('menu_filter.php');
             $data_add = explode(" ",$l->data_adaugarii);
             ?>
             <div class="request-item">
-				<a href="/android/index.php?view=categories&id=4" class="sa_lk_profile">
+				<a href="<?php echo $link_categ; ?>" class="sa_lk_profile">
 					<div class="pic-container" data-id="<?php echo $l->tip_anunt ?>" data-category="categories">
 						<p><?php echo JText::_('SAUTO_TIP_ANUNT_DETAIL'.$l->tip_anunt) ?> </p>
 						<img src="<?php echo $poza ?>" width="80" border="0" />
@@ -107,6 +107,15 @@ require_once('menu_filter.php');
                         $model = $db->loadResult();
                     } ?>
                     <p> <?php echo $marca.': '.$model; ?> </p>
+					<p> 
+						<?php
+						//obtin pret + moneda
+						$query = "SELECT `r`.`pret_oferit`, `m`.`m_scurt` FROM #__sa_raspunsuri as `r` JOIN #__sa_moneda as `m` ON `r`.`anunt_id` = '".$l->id."' AND `r`.`status_raspuns` = '1' AND `r`.`moneda` = `m`.`id`";
+						$db->setQuery($query);
+						$curency = $db->loadObject();
+						echo JText::_('SAUTO_DISPLAY_PRICE').'<br />'.$curency->pret_oferit.' '.$curency->m_scurt;
+						?>
+					</p>
 					<p>
                         <span><?php echo JText::_('SAUTO_SHOW_DATE') ?>: </span><?php echo $data_add[0]; ?>
                     </p>
