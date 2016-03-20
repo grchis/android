@@ -139,10 +139,42 @@ $list = $db->loadObjectList();
 $image_path = JURI::base()."components/com_sauto/assets/users/";	 
 ?>
 <div id="m_visitors">
-    <div class = "m_header">
-        <img id="filter-button" class="menu-button" style="right: 80px;"src="<?php echo $img_path?>filter-icon.png" />
-        <img id="menu-icon" class="menu-button" src="<?php echo $img_path?>menu-icon.png" />
-    </div>
+	<div class = "m_header" style="width: 100%; height: 100px; background-color: #509EFF">
+		<img id="menu-icon" class="menu-button" src="./components/com_sauto/assets/images/menu-icon.png" />
+		<img id="filter-button" class="menu-button" style="right: 80px;"src="<?php echo $img_path?>filter-icon.png" />
+	</div>
+
+	<div id="main-menu" style="display: none;">
+        <div class="menu-option">
+          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_requests.png" border="0">
+          <span class="menu-option-text" data-href="/android/index.php?view=add_request"> Adauga cerere </span>
+        </div>
+
+        <div class="menu-option">
+          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_my_request.png" border="0">
+          <span class="menu-option-text" data-href="/android/index.php?view=search"> Cauta firme </span>
+        </div>
+
+        <div class="menu-option">
+          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_final_request.png" border="0">
+          <span class="menu-option-text" data-href="/android/index.php?view=my_request"> Cererile mele </span>
+        </div>
+
+        <div class="menu-option">
+          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_alerts.png" border="0">
+          <span class="menu-option-text" data-href="/android/index.php?view=final_request"> Cereri finalizate </span>
+        </div>
+
+        <div class="menu-option">
+          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_edit_profile.png" border="0">
+          <span class="menu-option-text" data-href="/android/index.php/component/sauto/?view=edit_profile"> Editare profil </span>
+        </div>
+
+        <div class="menu-option">
+          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_logout.png" border="0">
+          <span class="menu-option-text" data-href="/android/index.php?view=logout"> Inchide Aplicatia </span>
+        </div>
+	</div>
     <div id="filter-menu" style="display: none;">
         <p class="filter-category-name">Oferte</p>
         <ul class="filter-category">
@@ -327,5 +359,25 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
             jQuery('#filter-menu').hide(500);
         }
     }
+			
+jQuery('#menu-icon').on('click', toggleMenu);
+jQuery('.menu-option-text').on('click', redirectToMenuOption);
+function toggleMenu () {
+	   if (isCollapsed){
+	        isCollapsed = false;
+	        jQuery('#main-menu').show(500);
+	    }
+	    else{
+	        isCollapsed = true;
+	        jQuery('#main-menu').hide(500);
+	    }
+		}
+
+	function redirectToMenuOption (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		var url=jQuery(event.target).data("href");
+   		window.location.href = url;
+	}
 </script>
 

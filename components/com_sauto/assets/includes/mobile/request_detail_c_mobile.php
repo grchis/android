@@ -66,19 +66,11 @@ $db->setQuery($query);
 $rezult = $db->loadObject();
 $document = JFactory::getDocument();
 require("toggle_js_mobile.php");
-
 $document->addScriptDeclaration ($js_code);
-
-
 $ajaxlink = 'http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js';
 //$document->addScript($ajaxlink);
 $ajaxlink2 = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js';
 $document->addScript($ajaxlink2);
-$path_js = JPATH_COMPONENT.DS.'assets'.DS.'script'.DS.'popup.js';
-require($path_js);
-
-$document->addScriptDeclaration ($jspopup3);
-
 $user =& JFactory::getUser();
 $uid = $user->id;
 $img_path = JURI::base()."components/com_sauto/assets/images/";
@@ -289,6 +281,8 @@ require("menu_filter.php");
 									$status_oferta = JText::_('SAUTO_OFERTA_NECASTIGATOARE');
 								} 
 							} else {
+							
+					//POP-UP ALEGE OFERTA CASTIGATOARE
 					?>
 								<p><button id="popup_window" data-popup-target="<?php echo '#winner-popup_'.$r->id;?>" class="sa_hover">
 								<?php echo JText::_('SAUTO_SELECT_OFERTA_BUTTON')?></button></p>
@@ -301,8 +295,8 @@ require("menu_filter.php");
 											$link_form_winner = JRoute::_('index.php?option=com_sauto&view=set_winner');
 											?>
 											<form action="<?php echo $link_form_winner; ?>" method="post" name="<?php echo 'select-'.$r->id; ?>" id="<?php echo 'select-'.$r->id; ?>" >
-												<input type="hidden" name="rasp_id" value="'.$r->id.'" />';
-												<input type="hidden" name="anunt_id" value="'.$id.'" />';
+												<input type="hidden" name="rasp_id" value="<?php echo $r->id; ?>" />
+												<input type="hidden" name="anunt_id" value="<?php echo $id; ?>" />
 												<p>Sigur doresti sa setezi aceasta oferta ca si castigatoare?</p>
 													<?php
 														if ($r->status_raspuns == 0) {
@@ -314,7 +308,7 @@ require("menu_filter.php");
 													</div>
 												</div>
 											</div>
-											<div class="popup-overlay"></div>
+										<div class="popup-overlay"></div>
 											<?php 
 										}
 						if ($r->status_raspuns == 1) {
@@ -415,6 +409,46 @@ if ($blocked != 0) {
 	</div>			
 </div>			
 <script type="text/javascript">
+
+jQuery(document).ready(function (jQuery) {
+    jQuery('[data-popup-target]').click(function () {
+        jQuery('html').addClass('overlay');
+        var activePopup = jQuery(this).attr('data-popup-target');
+        jQuery(activePopup).addClass('visible');
+    jQuery('.popup-exit').css({
+        'background-color': 'red',
+		'right':'0'
+		
+    });
+    });
+
+
+    jQuery(document).keyup(function (e) {
+        if (e.keyCode == 27 && jQuery('html').hasClass('overlay')) {
+            clearPopup();
+        }
+    });
+ 
+    jQuery('.popup-exit').click(function () {
+        clearPopup();
+ 
+    });
+ 
+    jQuery('.popup-overlay').click(function () {
+        clearPopup();
+    });
+ 
+    function clearPopup() {
+        jQuery('.popup.visible').addClass('transitioning').removeClass('visible');
+        jQuery('html').removeClass('overlay');
+ 
+        setTimeout(function () {
+            jQuery('.popup').removeClass('transitioning');
+        }, 200);
+    }
+ 
+});
+
 		var element = document.getElementById('hidden-values');
 		//element.getElementsByClassName('m_header')[0].remove();
 		var textValues = element.innerHTML.split('<br>');
