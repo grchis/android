@@ -365,7 +365,7 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
 	</div>
 	<div id="oferte_section">
 			<a href="<?php echo $link_anunt; ?>" class="sa_link_box">
-				<div style="position:relative;float:right; margin-right:2%;"class="sa_phone sa_min_width_offer sa_hover">
+				<p style="position:relative;float:right; margin-right:2%;"class="sa_phone sa_min_width_offer sa_hover">
 					<span class="sa_oferte_span">
 						<?php
 							$query = "SELECT count(*) FROM #__sa_raspunsuri WHERE `anunt_id` = '".$l->id."'";
@@ -380,7 +380,7 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
 							}
 						?>
 					</span>
-				</div>
+				</p>
 			</a>
 			<?php
 				$query = "SELECT count(*) FROM #__sa_comentarii WHERE `anunt_id` = '".$l->id."' AND `companie` = '".$uid."'";
@@ -388,10 +388,10 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
 				$comms = $db->loadResult();
 				$link_comments = JRoute::_('index.php?option=com_sauto&view=all_comment_list');
 			?>
-			<div style="position:relative;float:left; margin-left:2%;">
-			<form action="<?php echo $link_comments; ?>" method="post" name="<?php echo 'sa_list_comm_'.$l->id; ?>" id="<?php echo 'sa_list_comm_'.$l->id; ?>">
-				<input type="hidden" name="anunt_id" value="<?php echo $l->id; ?>" />
-			</form>
+			<p style="position:relative;float:left; margin-left:2%;">
+				<form action="<?php echo $link_comments; ?>" method="post" name="<?php echo 'sa_list_comm_'.$l->id; ?>" id="<?php echo 'sa_list_comm_'.$l->id; ?>">
+					<input type="hidden" name="anunt_id" value="<?php echo $l->id; ?>" />
+				</form>
 			<?php
 				if ($comms != 0) {
 					echo '<p onClick="document.forms[\'sa_list_comm_'.$l->id.'\'].submit();" class="sa_phone sa_min_width_offer sa_cursor sa_hover">';
@@ -402,12 +402,12 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
 				}
 					echo $comms.' '.JText::_('SAUTO_COMMENTS');
 					?>
-				</span>
-				</p>
+						</span>
+					</p>
 				</span>
 				</p>
 				
-			</div>
+			</p>
 			
 			</div>
 			</div>
