@@ -235,27 +235,53 @@ $image_path = JURI::base()."components/com_sauto/assets/users/";
           	
 	<div class="request-item">
 				<div class="pic-container" data-id="<?php echo $l->tip_anunt ?>" data-category="categories">
+				<p><a href="<?php echo $link_categ;?>"><?php echo JText::_('SAUTO_TIP_ANUNT_DETAIL'.$l->tip_anunt);?></a></p>
 					<img src="<?php echo $poza ?>" width="80" border="0" />
-				</div>	
+				</div>
 			     <div class="info-section">
                     <p>
                         <a href="<?php echo $link_anunt ?>"> <?php $l->titlu_anunt ?></a>
                     </p>
                     <p> <?php echo strip_tags($l->anunt) ?></p>
 
-                    <?php if ($l->marca_auto != 0) {
-                        //obtin marca si modelul
-                        $query = "SELECT `marca_auto` FROM #__sa_marca_auto WHERE `id` = '".$l->marca_auto."'";
-                        $db->setQuery($query);
-                        $marca = $db->loadResult();
-                    }?>
-                    <p> <?php echo $marca ?> </p>
-                    <?php if ($l->model_auto != 0) {
-                        $query = "SELECT `model_auto` FROM #__sa_model_auto WHERE `id` = '".$l->model_auto."'";
-                        $db->setQuery($query);
-                        $model = $db->loadResult();
-                    } ?>
-                    <p> <?php echo $model ?> </p>
+		<?php 
+					if ($l->accesorii_auto != 0) {
+						$query = "SELECT `accesorii` FROM #__sa_accesorii WHERE `id` = '".$l->accesorii_auto."'";
+						$db->setQuery($query);
+						$acc = $db->loadResult();
+					?>
+						<p> <?php echo $acc; ?> </p>
+					<?php
+						if ($l->subaccesorii_auto != 0) {
+							$query = "SELECT `subaccesoriu` FROM #__sa_subaccesorii WHERE `id` = '".$l->subaccesorii_auto."'";
+							$db->setQuery($query);
+							$subacc = $db->loadResult();
+						}
+					?> 
+						<p> <?php echo $subacc; ?> </p>
+					<?php
+						}
+					?>
+					
+					
+                    <?php if ($l->marca_auto != 0)
+						{
+									//obtin marca si modelul
+									$query = "SELECT `marca_auto` FROM #__sa_marca_auto WHERE `id` = '".$l->marca_auto."'";
+									$db->setQuery($query);
+									$marca = $db->loadResult();
+								?>
+								<p> <?php echo $marca; ?> </p>
+								<?php if ($l->model_auto != 0) {
+									$query = "SELECT `model_auto` FROM #__sa_model_auto WHERE `id` = '".$l->model_auto."'";
+									$db->setQuery($query);
+									$model = $db->loadResult();
+								} 
+								?>
+									<p> <?php echo $model; ?> </p>
+								<?php
+						}
+					?>
 					 <p>
                         <span><?php echo JText::_('SAUTO_SHOW_DATE') ?>: </span><?php echo $data_add[0]; ?>
                     </p>
