@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/categories_d_mobile.php');
+}else{
 $id =& JRequest::getVar( 'id', '', 'get', 'string' );
 $link_this = JRoute::_('index.php?option=com_sauto&view=categories&id='.$id);
 $link_filter = JRoute::_('index.php?option=com_sauto&view=requests_f&id='.$id.'&cat=1');
@@ -505,72 +509,4 @@ echo '<br /><br />';
 
 }
 ?>
-<div id="m_visitors">
-    <div id="main-container">
-        <?php
-        $i=1;
-        foreach ($list as $l) {
-            $image = 'anunt_type_'.$l->tip_anunt.'.png';
-            $link_categ = JRoute::_('index.php?option=com_sauto&view=categories&id='.$l->tip_anunt);
-
-            $query = "SELECT `poza`,`alt` FROM #__sa_poze WHERE `id_anunt` = '".$l->id."'";
-            $db->setQuery($query);
-            $pics = $db->loadObject();
-            if ($pics->poza != '') {
-                $poza = $image_path.$l->proprietar."/".$pics->poza;
-                $alt = $pics->alt;
-            } else {
-                $poza = $img_path.$image;
-                $alt = '';
-            }
-            $data_add = explode(" ",$l->data_adaugarii);
-            ?>
-            <div class="request-item">
-                <div class="pic-container" id="<?php echo $l->tip_anunt ?>" data-category="categories">
-                    <p><?php echo JText::_('SAUTO_TIP_ANUNT_DETAIL'.$l->tip_anunt) ?> </p>
-                    <img src="<?php echo $poza ?>" width="80" border="0" />
-                </div>
-                <div class="info-section">
-                    <p>
-                        <a href="<?php echo $link_anunt ?>"> <?php $l->titlu_anunt ?></a>
-                    </p>
-                    <p>
-                        <span><?php echo JText::_('SAUTO_SHOW_DATE') ?>: </span><?php echo $data_add[0]; ?>
-                    </p>
-                    <p> <?php echo strip_tags($l->anunt) ?></p>
-
-                    <?php if ($l->marca_auto != 0) {
-                        //obtin marca si modelul
-                        $query = "SELECT `marca_auto` FROM #__sa_marca_auto WHERE `id` = '".$l->marca_auto."'";
-                        $db->setQuery($query);
-                        $marca = $db->loadResult();
-                    }?>
-                    <p> <?php echo $marca ?> </p>
-                    <?php if ($l->model_auto != 0) {
-                        $query = "SELECT `model_auto` FROM #__sa_model_auto WHERE `id` = '".$l->model_auto."'";
-                        $db->setQuery($query);
-                        $model = $db->loadResult();
-                    } ?>
-                    <p> <?php echo $model ?> </p>
-
-                </div>
-                <div class="contact-section">
-                    <p><span><?php echo JText::_('SAUTO_DISPLAY_JUDET') ?>: </span> <?php echo $userd->judet ?> </p>
-                    <p style="background-color: #509EFF;" data-phone="<?php echo $userd->telefon ?>">
-                        <img src="'.$img_path.'icon_phone.png" border="0" class="sa_phone_img" />
-                        <?php echo JText::_('SAUTO_TELEFON_ASCUNS') ?>
-                    </p>
-                    <?php
-                    $query = "SELECT count(*) FROM #__sa_raspunsuri WHERE `proprietar` = '".$l->proprietar."' AND `anunt_id` = '".$l->id."'";
-                    $db->setQuery($query);
-                    $oferte = $db->loadResult();
-                    ?>
-                    <p><?php echo $oferte == 0 ? JText::_('SAUTO_FARA_OFERTE') : $oferte == 1 ?
-                            JText::_('SAUTO_O_OFERTA') : JText::_('SAUTO_NR_OFERTE'); ?></p>
-                </div>
-            </div>
-        <?php }
-        ?>
-    </div>
-</div>
-
+<?php }?>
