@@ -100,7 +100,6 @@ require_once("menu_filter.php");
 			$link_delete_anunt = JRoute::_('index.php?option=com_sauto&view=request_detail&task=delete&id='.$l->id);
 			echo '<p class="sa_request_title"><a href="'.$link_anunt.'" class="sa_link_request">'.$l->titlu_anunt.'</a></p>';
 			$data_add = explode(" ",$l->data_adaugarii);
-			echo '<p>'.JText::_('SAUTO_SHOW_DATE').' '.$data_add[0].'</p>';
 			echo '<p>'.substr(strip_tags($l->anunt), 0, 50).' ...</p>';
 			if ($l->marca_auto != 0) {
 
@@ -126,7 +125,9 @@ require_once("menu_filter.php");
 						}
 					echo '</p>';
 			}
+			echo '<p>'.JText::_('SAUTO_SHOW_DATE').' '.$data_add[0].'</p>';
 			?>
+			
 			</div>
 		 <div class="contact-section">
 			<?php

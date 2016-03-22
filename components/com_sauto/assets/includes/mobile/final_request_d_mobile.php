@@ -181,22 +181,22 @@ require("calificativ_mobile.php");
 	<div id="main-menu" style="display: none;">
         <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_requests.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=add_request"> Adauga cerere </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=requests"> Cereri </span>
         </div>
 
         <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_my_request.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=search"> Cauta firme </span>
+          <span class="menu-option-text" data-href="/android/index.php/component/sauto/?view=my_request"> Ofertele Mele </span>
         </div>
 
         <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_final_request.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=my_request"> Cererile mele </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=final_request"> Oferte Finalizate </span>
         </div>
 
         <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_alerts.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=final_request"> Cereri finalizate </span>
+          <span class="menu-option-text" data-href="/android/index.php?view=alerts"> Alerte </span>
         </div>
 
         <div class="menu-option">
@@ -206,9 +206,9 @@ require("calificativ_mobile.php");
 
         <div class="menu-option">
           <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_logout.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=logout"> Inchide Aplicatia </span>
+          <span class="menu-option-text" data-href="/android/index.php?option=com_sauto&amp;view=logout"> Inchide Aplicatia </span>
         </div>
-	</div>
+      </div>
  <div id="filter-menu" style="display: none;">
         <p class="filter-category-name">Oferte</p>
         <ul class="filter-category">
