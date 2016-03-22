@@ -485,6 +485,7 @@ function toggleMenu () {
 		event.preventDefault();
 		event.stopPropagation();
 		var url=jQuery(event.target).data("href");
+		alert(url);
    		window.location.href = url;
 	}
 </script>
