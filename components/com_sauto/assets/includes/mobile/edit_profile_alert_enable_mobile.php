@@ -2,7 +2,7 @@
 .center {
     margin: auto;
     width: 100%;
-    padding: 15%;
+    padding: 12%;
 }
 .buton{
     margin-left: 15%;
@@ -17,9 +17,9 @@
 	}
 	.tip_piesa{
 	width: 40%;
-    height: 150px;
+    height: 170px;
     overflow-y: scroll;
-	
+	display: inline;
 	}
 	
 	.tip_judet{
@@ -92,13 +92,14 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_save'
 			?>
 			<div class="tip_piesa">
 				<p><strong><?php echo JText::_('SAUTO_ALEGE_TIP_PIESA'); ?></strong></p>
-				<input type="checkbox" name="nou" value="1" />
-				<?php echo JText::_('SAUTO_VREAU_PIESA_NOUA'); ?>
-				<input type="checkbox" name="sh" value="1" /> <?php echo JText::_('SAUTO_VREAU_PIESA_SH'); ?>
+				<p><input type="checkbox" name="nou" value="1" />
+				<?php echo JText::_('SAUTO_VREAU_PIESA_NOUA'); ?></p>
+				<p><input type="checkbox" name="sh" value="1" /> <?php echo JText::_('SAUTO_VREAU_PIESA_SH'); ?><p/>
 			</div>
 			<?php
 		}
 		?>
+		
 		<div style="clear:both;"></div>
 		<div class="button">
 			<input type="hidden" name="alert_id" value="<?php echo $id; ?>" />
@@ -113,12 +114,4 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_save'
         document.getElementById('gkTopBar').remove();
         document.getElementById('content9').style.all = "none";
         document.getElementsByTagName('h1')[0].remove();
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('submit').addEventListener('click', function (event) {
-                event.stopPropagation();
-                event.preventDefault();
-                var form = document.getElementsByTagName('form')[0];
-                form.submit();
-            });
-        });
   </script>

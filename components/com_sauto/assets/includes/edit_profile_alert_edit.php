@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/edit_profile_alert_edit_mobile.php');
+}else{
 $db = JFactory::getDbo();
 
 $user =& JFactory::getUser();
@@ -133,3 +137,4 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_save'
 	</tr>
 </table>
 </form>
+<?php  } ?>
