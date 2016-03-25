@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/alerts_d_mobile.php');
+}else{
 $document = JFactory::getDocument ();
 $app =& JFactory::getApplication();
 $app->setUserState('url_alert', 'alerte');
@@ -239,142 +243,5 @@ $i=0;
 		</td>
 	</tr>
 </table>
-
-<div id="m_visitors">
-    <div class = "m_header" style="width: 100%; height: 100px; background-color: #509EFF">
-    	<img id="menu-icon" class="menu-button" src="<?php echo $img_path?>menu-icon.png" />
-    </div>
-
-    <div id="main-menu" style="display: none;">
-        <div class="menu-option" data-href="http://localhost/android/index.php?view=requests">
-          <img class="menu-option-pic" src="http://localhost/android/components/com_sauto/assets/images/icon_requests.png" border="0">
-          <span class="menu-option-text"> Cereri </span>
-        </div>
-
-        <div class="menu-option" data-href="http://localhost/android/index.php/component/sauto/?view=my_request">
-          <img class="menu-option-pic" src="http://localhost/android/components/com_sauto/assets/images/icon_my_request.png" border="0">
-          <span class="menu-option-text"> Ofertele Mele </span>
-        </div>
-
-        <div class="menu-option" data-href="http://localhost/android/index.php?view=final_request">
-          <img class="menu-option-pic" src="http://localhost/android/components/com_sauto/assets/images/icon_final_request.png" border="0">
-          <span class="menu-option-text"> Oferte Finalizate </span>
-        </div>
-
-        <div class="menu-option" data-href="http://localhost/android/index.php?view=alerts">
-          <img class="menu-option-pic" src="http://localhost/android/components/com_sauto/assets/images/icon_alerts.png" border="0">
-          <span class="menu-option-text"> Alerte </span>
-        </div>
-
-        <div class="menu-option" data-href="http://localhost/android/index.php/component/sauto/?view=edit_profile">
-          <img class="menu-option-pic" src="http://localhost/android/components/com_sauto/assets/images/icon_edit_profile.png" border="0">
-          <span class="menu-option-text"> Editare profil </span>
-        </div>
-
-        <div class="menu-option" data-href="http://localhost/android/index.php?option=com_sauto&amp;view=logout">
-          <img class="menu-option-pic" src="http://localhost/android/components/com_sauto/assets/images/icon_logout.png" border="0">
-          <span class="menu-option-text"> Inchide Aplicatia </span>
-        </div>
-      </div>
-
-    <?php
-        $cats = explode(",", $prf->categorii_activitate);
-        $query = "SELECT * FROM #__sa_tip_anunt WHERE `published` = '1'";
-        $db->setQuery($query);
-        $tip = $db->loadObjectList();
-    ?>
-
-    <div class="domain-header">
-        <div class="domain-status"> <?php echo JText::_('SAUTO_STATUS_TRANZ'); ?> </div>
-        <div class="domain-description"> <?php echo JText::_('SAUTO_DEALER_DOMENIU_ACT'); ?> </div>
-    </div>
-
-    <div class="domain-content">
-        <?php
-        $cats = explode(",", $prf->categorii_activitate);
-        foreach ($tip as $t) {
-            $link_alerts_edit = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_edit&id=' . $t->id);
-            $link_alerts_enable = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_enable&id=' . $t->id);
-            $valoare = $t->id . '-1';
-            $link = in_array($valoare, $cats) ? $link_alerts_edit : $link_alerts_enable;
-
-            echo"<div class=\"domain-option\"><a href=\"" . $link . "\">";
-            //pun imaginea daca e acceptat sau nu
-            if (in_array($valoare, $cats)) {
-                echo "<div class=\"domain-status\"><img src=\"" . $img_path . "check_yes.png\" width=\"30px\" /></div>";
-            } else {
-                echo "<div class=\"domain-status\"><img src=\"" . $img_path . "check_no.png\" width=\"30px\" /></div>";
-            }
-
-            echo '<div class="domain-description">' . $t->tip . '</div>';
-            echo "</a></div>";
-        }
-        ?>
-    </div>
-
-</div>
-
-<style type="text/css">
-    .domain-option{
-        margin-top: 15px;
-    }
-    .domain-status{
-        display: inline-block;
-        width: 20%;
-        font-size: 1.6em;
-        vertical-align: top;
-    }
-
-    .domain-description{
-        display: inline-block;
-        font-size: 1.6em;
-        width: 78%;
-        vertical-align: top;
-    }
-
-    @media screen and (max-width: 1210px){
-    .gkPage {
-        padding: 0 !important;
-    }
-}
-
-</style>
-
-<script type="text/javascript">
-    var isMobile = navigator.userAgent.contains('Mobile');
-    if (!isMobile) {
-        jQuery('#m_visitors').remove();
-    } else {
-    	var isMenuCollapsed = true;
-    	var isFilterCollapsed = true;
-
-        jQuery('#m_table').remove();
-        jQuery('#side_bar').remove();
-        jQuery('#gkTopBar').remove();
-        document.getElementById('content9').style.all = "none";
-        document.getElementsByTagName('h1')[0].remove();
-
-        jQuery('#menu-icon').on('click', toggleMenu);
-
-		jQuery('.menu-option-text').on('click', redirectToMenuOption);
-    }
-
-    function toggleMenu () {
-	   if (isMenuCollapsed){
-	        isMenuCollapsed = false;
-	        jQuery('#main-menu').show(500);
-	    }
-	    else{
-	        isMenuCollapsed = true;
-	        jQuery('#main-menu').hide(500);
-	    }
-	}
-
-	function redirectToMenuOption (event) {
-  		event.preventDefault();
-  		event.stopPropagation();
-
-  		window.location.href = jQuery(event).data('href');
-	}
-</script>
+<?php }?>
 

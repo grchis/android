@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/edit_profile_alert_enable_mobile.php');
+}else{
 $db = JFactory::getDbo();
 $id =& JRequest::getVar( 'id', '', 'get', 'string' );
 //obtin numele domeniului de activitate
@@ -95,67 +99,4 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_save'
 	</tr>
 </table>
 </form>
-
-<div id="m_visitors">
-    <div class = "m_header" style="width: 100%; height: 100px; background-color: #509EFF">
-    </div>
-
-    <h1><?php echo $tip; ?></h1>
-
-    <form method="post" action="<?php echo $link; ?>" id="m_table">
-        <?php
-        //echo '>>> '.$tip;
-        if (($id == 2) OR ($id == 5)) {
-
-        } else {
-        ?>
-            <h4 id="cars-section"><?php echo JText::_('SAUTO_ALEGETI_MARCI_AUTO'); ?></h4>
-            <div id="cars-option">
-            <?php foreach ($marci as $m) {
-                //listare checkboxuri
-                echo '<div class="option">';
-                    echo '<div>'. $m->marca_auto .'</div>';
-                    echo '<input type="checkbox" name="cat_m_'.$id.'_'.$m->id.'" value="1" style="display: none;" /> ';
-                echo "</div>";
-
-            } ?>
-            </div>
-
-            <h4 id="county-section"><?php echo JText::_('SAUTO_ALEGETI_JUDETUL'); ?></h4>
-            <div id="county-option"></div>
-            <?php foreach ($judet as $j) {
-                //listare checkboxuri
-                echo '<div class="option">';
-                echo '<div>'. $j->judet .'</div>';
-                echo '<input type="checkbox" name="cat_m_'.$id.'_'.$m->id.'" value="1" style="display: none;" /> ';
-                echo "</div>";
-
-            } ?>
-        <?php } ?>
-
-        <div id="submit" style="margin: 0px auto; margin-bottom: 25px; padding-top: 10px; width:80%; text-align: center; height: 50px; background-color: #509EFF; color: white; font-size: 2.4em; padding-bottom: 10px;">
-            Submit
-        </div>
-    </form>
-</div>
-
-<script type="text/javascript">
-    var isMobile = navigator.userAgent.contains('Mobile');
-    if (!isMobile) {
-        document.getElementById('m_visitors').remove();
-    } else {
-        document.getElementById('m_table').remove();
-        document.getElementById('side_bar').remove();
-        document.getElementById('gkTopBar').remove();
-        document.getElementById('content9').style.all = "none";
-        document.getElementsByTagName('h1')[0].remove();
-        document.addEventListener('DOMContentLoaded', function () {
-            document.getElementById('submit').addEventListener('click', function (event) {
-                event.stopPropagation();
-                event.preventDefault();
-                var form = document.getElementsByTagName('form')[0];
-                form.submit();
-            });
-        });
-    }
-</script>
+<?php } ?>
