@@ -9,10 +9,7 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/edit_profile_d_facturi_mobile.php');
-}else{
+
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
@@ -157,5 +154,4 @@ if ($total == 0) {
 	</tbody>
 	</table>
 	<?php
-}
 }

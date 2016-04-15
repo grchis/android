@@ -9,10 +9,7 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/edit_profile_d_filiale_mobile.php');
-}else{
+
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
@@ -127,5 +124,4 @@ $filials = $db->loadobjectList();
 ?>
 </table>
 <?php
-}
 }

@@ -9,10 +9,6 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/edit_profile_d_profil_mobile.php');
-}else{
 $app =& JFactory::getApplication();
 $app->setUserState('url_alert', 'profil');
 
@@ -333,4 +329,196 @@ $link_alerts_enable = JRoute::_('index.php?option=com_sauto&view=edit_profile&ta
 			</tr>
 		</table>
 </form>
-<?php } ?>
+
+<div id="m_visitors">
+    <form action="<?php echo $link_form; ?>" class="mobile-form" method="post" class="form-validate" enctype="multipart/form-data">
+        <?php echo JHtml::_( 'form.token' ); ?>
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_COMPANY_NAME'); ?></p>
+        <input type="text" name="email" value="<?php echo $profil->companie; ?>" class="input-field" readonly/>
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_REPREZ_NAME'); ?></p>
+        <input type="text" name="rnames" value="<?php echo $profil->reprezentant; ?>" class="required input-field" />
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_EMAIL'); ?></p>
+        <input type="text" name="email" value="<?php echo $profil->email; ?>" class="required validate-email input-field" />
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_NEW_PASS1'); ?></p>
+        <input type="password" name="new_pass1" value="" class="input-field" />
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_NEW_PASS2'); ?></p>
+        <input type="password" name="new_pass2" value="" class="input-field" />
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_PHONE'); ?></p>
+        <input type="text" name="phone" value="<?php echo $profil->telefon; ?>" class="required input-field" />
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_COD_FISCAL'); ?></p>
+        <input type="text" name="email" value="<?php echo $profil->cod_fiscal; ?>" class="input-field" readonly/>
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_NR_REG'); ?></p>
+        <input type="text" name="email" value="<?php echo $profil->nr_registru; ?>" class="input-field" readonly/>
+
+        <p class="field-name"><?php echo JText::_('SAUTO_FORM_SEDIU'); ?></p>
+        <textarea name="sediu" id="sediu" cols="60" rows="20" style="width: 100%; height: 150px;" >
+        </textarea>
+
+        <?php
+        if ($profil->poza == '') {
+            //fara avatar
+            echo '<p class="field-name no-avatar">'.JText::_('SAUTO_FORM_NO_AVATAR_ADDED').'</p>';
+        } else {
+            //avatar
+            $path = JUri::base().'components/com_sauto/assets/users/'.$uid.'/';
+            echo '<img class="avatar-pic" src="'. $path.$profil->poza .'" />';
+        }
+        ?>
+
+        <div id="avatar-loader">Choose an avatar</div>
+        <input id="hidden-file" type="file" name="image" value="" >
+
+        <div id="submit" >Submit</div>
+    </form>
+    <?php
+    $cats = explode(",", $profil->categorii_activitate);
+    $query = "SELECT * FROM #__sa_tip_anunt WHERE `published` = '1'";
+    $db->setQuery($query);
+    $tip = $db->loadObjectList();
+    ?>
+
+    <div class="domain-container">
+        <div class="domain-header">
+            <div class="domain-status"> <?php echo JText::_('SAUTO_STATUS_TRANZ'); ?> </div>
+            <div class="domain-description"> <?php echo JText::_('SAUTO_DEALER_DOMENIU_ACT'); ?> </div>
+        </div>
+
+        <div class="domain-content">
+            <?php
+            $cats = explode(",", $prf->categorii_activitate);
+            foreach ($tip as $t) {
+                $link_alerts_edit = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_edit&id=' . $t->id);
+                $link_alerts_enable = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=alert_enable&id=' . $t->id);
+                $valoare = $t->id . '-1';
+                $link = in_array($valoare, $cats) ? $link_alerts_edit : $link_alerts_enable;
+
+                echo"<div class=\"domain-option\"><a href=\"" . $link . "\">";
+                //pun imaginea daca e acceptat sau nu
+                if (in_array($valoare, $cats)) {
+                    echo "<div class=\"domain-status\"><img src=\"" . $img_path . "check_yes.png\" width=\"40px\" /></div>";
+                } else {
+                    echo "<div class=\"domain-status\"><img src=\"" . $img_path . "check_no.png\" width=\"40px\" /></div>";
+                }
+
+                echo '<div class="domain-description">' . $t->tip . '</div>';
+                echo "</a></div>";
+            }
+            ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+        document.getElementById('avatar-loader').addEventListener("click", triggerHiddenFileInput);
+
+        document.getElementById('submit').addEventListener("click", submitForm);
+
+        function triggerHiddenFileInput(event){
+            event.preventDefault();
+            event.stopPropagation();
+
+            document.getElementById('hidden-file').click();
+        }
+
+        function submitForm(event)
+        {
+            event.preventDefault();
+            event.stopPropagation();
+            var form = document.getElementsByTagName('form')[0];
+            form.submit();
+        }
+
+        if (document.getElementsByTagName('h1')[0])
+        {
+            document.getElementsByTagName('h1')[0].remove();
+        }
+        if (document.getElementById("side_bar"))
+        {
+            document.getElementById("side_bar").remove();
+        }
+        if(document.getElementsByTagName('center')[0])
+        {
+            document.getElementsByTagName('center')[0].remove();
+        }
+        if(document.getElementById('gkTopBar'))
+        {
+            document.getElementById('gkTopBar').remove();
+        }
+        if(document.getElementById('m_table'))
+        {
+            document.getElementById('m_table').remove();
+        }
+        document.write('<style type="text/css" >#content9{width: 100% !important;' +
+            'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
+            'width: 100% !important;}</style>'
+        );
+</script>
+
+<style type="text/css">
+    .avatar-pic{
+        width: 50%;
+        margin-left: 25%;
+        margin-bottom: 15px;
+    }
+
+    #hidden-file{
+        display: none;
+    }
+
+    form.mobile-form, .domain-container{
+        margin-left: 25px;
+        margin-right: 5%;
+        margin-top: 5%;
+    }
+    #avatar-loader{
+        margin: 0px auto;
+        margin-bottom: 25px;
+        padding-top: 10px;
+        text-align: center;
+        height: 50px;
+        background-color: #509EFF;
+        color: white;
+        font-size: 2.4em;
+        padding-bottom: 10px;
+    }
+    p{
+        margin: 0;
+        font-size: 1.5em;
+    }
+    input.input-field, .read-only-value {
+        margin-bottom: 25px;
+        width: 99%;
+    }
+    p.field-name.no-avatar{
+        font-size: 1.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 15px;
+    }
+    }
+    .domain-option{
+        margin-top: 15px;
+    }
+    .domain-status{
+        display: inline-block;
+        width: 20%;
+        font-size: 1.4em;
+        vertical-align: top;
+    }
+    .domain-description{
+        display: inline-block;
+        font-size: 1.6em;
+        width: 78%;
+        vertical-align: top;
+    }
+    textarea{
+        margin-bottom: 25px;;
+    }
+</style>

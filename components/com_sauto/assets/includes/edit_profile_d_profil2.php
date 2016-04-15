@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/edit_profile_d_profil2_mobile.php');
+}else{
 $img_path = JURI::base()."components/com_sauto/assets/images/";
 $image_path = JURI::base()."components/com_sauto/assets";
 $db = JFactory::getDbo();
@@ -299,3 +303,4 @@ $profil = $db->loadObject();
 		?>
 	</table>
 </center>
+<?php } ?>

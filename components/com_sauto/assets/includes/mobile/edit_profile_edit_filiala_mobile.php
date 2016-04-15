@@ -9,10 +9,7 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/edit_profile_edit_filiala_mobile.php');
-}else{
+
 $id =& JRequest::getVar( 'id', '', 'get', 'string' );
 
 $db = JFactory::getDbo();
@@ -162,4 +159,3 @@ $link_form = JRoute::_('index.php?option=com_sauto&view=edit_profile&task=editin
 		</td>
 	</tr>
 </table>
-<?php } ?>
