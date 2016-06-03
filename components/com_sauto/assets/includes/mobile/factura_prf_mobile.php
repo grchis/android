@@ -1,25 +1,41 @@
-<?php
-/**
- * @package    sauto
- * @subpackage Views
- * @author     Dacian Strain {@link http://shop.elbase.eu}
- * @author     Created on 17-Nov-2013
- * @license    GNU/GPL
- */
+<style type="text/css">
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
 
-//-- No direct access
+#gkMainbody table tbody{
+		width:100%!important;
+}
+#gkMainbody table thead{
+		width:100%!important;
+}
+  #gkMainbody table tr{
+	  width:100%;
+  }
+#gkMainbody table:before {
+    content: "";
+	width:100%;
+	
+  }
+ #gkMainbody table  th {
+	border-top: 1px solid #222;
+    border-bottom: 1px solid #e5e5e5;
+    color: #222; 
+    font-weight: 600;
+    padding: 10px;
+    text-align: left;
+  }
+
+</style>
+<?php
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/factura_prf_mobile.php');
-}else{
 $document =& JFactory::getDocument();
 $document->addStyleSheet( 'components/com_sauto/assets/media.css', 'text/css', 'print' );
-
 $path = JPATH_ROOT.DS.'components'.DS.'com_sauto'.DS.'assets'.DS.'includes'.DS;
 require($path."print.php");
 $document->addScriptDeclaration ($js_code);
-
 $link = JRoute::_('index.php?option=com_sauto&view=facturi');
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
@@ -35,7 +51,6 @@ $data = explode(" ", $date_f->data_tr);
 $query = "SELECT `reprezentant` FROM #__sa_profiles WHERE `uid` = '".$uid."'";
 $db->setQuery($query);
 $repr = $db->loadResult();
-
 $img_path = JURI::base()."components".DS."com_sauto".DS."assets".DS."images".DS;
 //selectez ce se prelucreaza, creditele sau valoarea in lei
 if ($date_f->tip_plata == 'credit') {
@@ -44,36 +59,24 @@ if ($date_f->tip_plata == 'credit') {
 	$credite = ($date_f->pret*$date_f->curs_euro);
 }
 //obtin pret fara tva
-//$credite = $date_f->credite;
-//echo 'credite > '.$credite.'<br />';
 $fara_tva_tot = $credite/(1.24);
-//echo 'brut > '.$fara_tva_tot.'<br />';
 $fara_tva_tot_r = round($fara_tva_tot, 2);
-//echo 'p. f. tva tot > '.$fara_tva_tot_r.'<br />';
 $fara_tva_u = $fara_tva_tot/$credite;
-//echo 'brut > '.$fara_tva_u.'<br />';
 $fara_tva_u_r = round($fara_tva_u, 2);
-//echo 'pret f tva unit > '.$fara_tva_u_r.'<br />';
 $tva_tot = $credite - $fara_tva_tot;
-//echo 'tva brut total > '.$tva_tot.'<br />';
 $tva_u = $tva_tot / $credite;
-//echo 'tva unit brut> '.$tva_u.'<br />';
 $tva_u_r = round($tva_u, 2);
-//echo 'tva u > '.$tva_u_r.'<br />';
 $total_u = $credite * $fara_tva_u;
-//echo 'total fara tva brut > '.$total_u.'<br />';
 $total_u_r = round($total_u, 2);
-//echo 'total fara tva > '.$total_u_r.'<br />';
 $total_tva = $credite * $tva_u;
-//echo 'tva brut > '.$total_tva.'<br />';
 $total_tva_r = round($total_tva, 2);
-//echo 'tva > '.$total_tva_r.'<br />';
 $totalul = $total_u + $total_tva;
-//echo 'totalul > '.$totalul;
+require('menu_filter_d.php');
 ?>
 <div style="float:right;margin-bottom:10px;">
 <input type=button onclick="printDiv('printnow')" value="<?php echo JText::_('SAUTO_FACT_TIPARESTE_PROFORMA'); ?>" />
 </div>
+
 <br /><br />
 <div class="print" id="printnow">
 <table width="100%" class="sa_table_class" cellpadding="0"  cellspacing="0" border="0">
@@ -85,7 +88,7 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 		</td>
 	</tr>
 	<tr>
-		<td valign="top" width="35%"><?php require("furnizor.php"); furnizor(); ?></td>
+		<td valign="top" width="35%"><?php require("furnizor_mobile.php"); furnizor(); ?></td>
 		<td valign="top" align="center">
 			<br /><br />
 			<div class="sa_fact_title"><?php echo JText::_('SAUTO_FACTURA_PROFORMA'); ?></div>
@@ -192,6 +195,13 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 <div style="float:right;margin-top:10px;">
 <a href="<?php echo $link; ?>"><?php echo JText::_('SAUTO_FACT_INAPOI_LA_FACTURI'); ?></a>
 </div>
-<?php 
-}
-?>
+<script type="text/javascript">
+	document.getElementById('gkTopBar').remove();
+		document.getElementById('side_bar').style.display = "none";
+		document.getElementById('content9').style.all = "none";
+		document.write('<style type="text/css" >#content9{width: 100% !important;' + 
+						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
+						'width: 100% !important;}</style>'
+		);
+	
+</script>

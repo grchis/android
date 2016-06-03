@@ -1,18 +1,21 @@
-<?php
-/**
- * @package    sauto
- * @subpackage Views
- * @author     Dacian Strain {@link http://shop.elbase.eu}
- * @author     Created on 17-Nov-2013
- * @license    GNU/GPL
- */
+<style type="text/css">
+form {
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+	#gkMainbody table:before {
+    content: "";
+  }
 
-//-- No direct access
+</style>
+<?php
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/pay_pp_abn_mobile.php');
-}else{
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
@@ -72,4 +75,32 @@ echo JText::sprintf('SA_PLATA_PAYPAL_ABONAMENT_DESC2', $pret->abonament, $pret->
                     <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					<input type="hidden" name="custom" value='<?php echo 'abonament-pp-'.$uid.'-'.$pret->pret; ?>'><!-- custom field -->
                 </form>
-<?php } ?>
+<script type="text/javascript">
+	window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')
+
+		if (jQuery('#m_table')) {
+			jQuery('#m_table').remove();
+		}
+		if (jQuery('#gkTopBar')) {
+			jQuery('#gkTopBar').remove();
+		}
+		if (jQuery('#sa_reclame_top')) {
+			jQuery('#sa_reclame_top').remove();
+		}
+		if (jQuery('#sa_viz_side_bar')) {
+			jQuery('#sa_viz_side_bar').remove();
+		}
+		if (jQuery('#additional_content')) {
+			jQuery('#additional_content').remove();
+		}
+
+		document.write('<style type="text/css" >#content9{width: 100% !important;' + 
+						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
+						'width: 100% !important;}</style>'
+		);
+
+		jQuery('#menu-icon').on('click', toggleMenu);
+
+		jQuery('.menu-option-text').on('click', redirectToMenuOption);
+	
+</script>

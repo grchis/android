@@ -59,15 +59,15 @@ $profil = $db->loadObject();
 <div id="m_visitors">
 	<div id="reprezentant" style="width:100%;"> 
 		<div id="info">
-		<p><b><?php echo JText::_('SAUTO_REPREZENTANT');?>:</b> <?php echo $profil->reprezentant;?></p>
-	<p><b><?php  echo JText::_('SAUTO_PROFILE_CITY'); ?>: </b>	 <?php  echo $profil->localitate; ?></p>
-	<p><b> <?php  echo JText::_('SAUTO_PROFILE_JUDET'); ?>: </b>    <?php  echo $profil->judet; ?></p>
-	<p><b> <?php  echo  JText::_('SAUTO_PROFILE_SEDIU');?>: </b>   <?php echo $profil->sediu; ?></p>
+		<p><?php echo JText::_('SAUTO_REPREZENTANT');?>: <?php echo $profil->reprezentant;?></p>
+	<p><?php  echo JText::_('SAUTO_PROFILE_CITY'); ?>: <?php  echo $profil->localitate; ?></p>
+	<p> <?php  echo JText::_('SAUTO_PROFILE_JUDET'); ?>:    <?php  echo $profil->judet; ?></p>
+	<p><?php  echo  JText::_('SAUTO_PROFILE_SEDIU');?>:  <?php echo $profil->sediu; ?></p>
 	<p>
-		<b> <?php  echo JText::_('SAUTO_PROFILE_REGISTER_DATE'); ?>: </b>
+	 <?php  echo JText::_('SAUTO_PROFILE_REGISTER_DATE'); ?>
 		<?php 	$data_inreg = explode(" ", $profil->registerDate); echo $data_inreg[0]; ?>
 	</p>
-	<p><span> <?php  echo JText::_('SAUTO_PROFILE_FEEDBACKS');  ?>: </span> <?php  
+	<p><span> <?php  echo JText::_('SAUTO_PROFILE_FEEDBACKS');  ?> </span> <?php  
 							$neg2 = $poz_3 + $neg_3;
 							$feeds = $poz_3/$neg2;
 							$all = $poz_3 + $neg_3 + $neu_3;

@@ -9,7 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/facturi_mobile.php');
+}else{
 $document = JFactory::getDocument();
 require("toggle_js.php");
 $document->addScriptDeclaration ($js_code);
@@ -273,4 +276,5 @@ echo '<br /><br />';
 	</tr>
 </table>
 <?php	
+}
 }

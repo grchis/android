@@ -76,13 +76,7 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile');
           <div id="edit-profile"class="tab-module">
             <?php require("edit_profile_d_profil_mobile.php"); ?>
           </div>
-          <div id="profile" class="hidden tab-module">
-            <?php require("edit_profile_d_profil2_mobile.php"); ?>
-          </div>
-          <div id="financiar" class="hidden tab-module">
-            <?php require("edit_profile_d_financiar_mobile.php"); ?>
-          </div>
-          <div id="abonament" class="hidden tab-module">
+           <div id="abonament" class="hidden tab-module">
             <?php require("edit_profile_d_abonament_mobile.php"); ?>
           </div>
           <div id="facturi" class="hidden tab-module">
@@ -91,7 +85,13 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile');
           <div id="filiale" class="hidden tab-module">
             <?php require("edit_profile_d_filiale_mobile.php"); ?>
           </div>
-      </div>
+		    <div id="financiar" class="hidden tab-module">
+            <?php require("edit_profile_d_financiar_mobile.php"); ?>
+          </div>
+		<div id="profile" class="hidden tab-module">
+            <?php require("edit_profile_d_profil2_mobile.php"); ?>
+          </div>
+		</div>
   </div>
 
 
@@ -159,16 +159,7 @@ function toggleFilterMenu () {
     }
 }
 
-function toggleMenu () {
-   if (isMenuCollapsed){
-        isMenuCollapsed = false;
-        jQuery('#main-menu').show(500);
-    }
-    else{
-        isMenuCollapsed = true;
-        jQuery('#main-menu').hide(500);
-    }
-}
+
 </script>
 
 

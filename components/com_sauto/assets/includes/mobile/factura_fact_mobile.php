@@ -9,10 +9,7 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/factura_prf_mobile.php');
-}else{
+
 $document =& JFactory::getDocument();
 $document->addStyleSheet( 'components/com_sauto/assets/media.css', 'text/css', 'print' );
 
@@ -36,15 +33,22 @@ $query = "SELECT `reprezentant` FROM #__sa_profiles WHERE `uid` = '".$uid."'";
 $db->setQuery($query);
 $repr = $db->loadResult();
 
-$img_path = JURI::base()."components".DS."com_sauto".DS."assets".DS."images".DS;
+//obtin cursul euro
+$query = "SELECT `curs_euro` FROM #__sa_curs_valutar WHERE `data` LIKE '".$data[0]."%'";
+$db->setQuery($query);
+$curs_v = $db->loadResult();
+//echo $query.'<br />>>> '.$curs_v;
 //selectez ce se prelucreaza, creditele sau valoarea in lei
 if ($date_f->tip_plata == 'credit') {
 	$credite = $date_f->credite;
 } else {
-	$credite = ($date_f->pret*$date_f->curs_euro);
+	if ($date_f->moneda == 3) { 
+	$credite = ($date_f->pret*$curs_v);
+	} else {
+	$credite = $date_f->pret;
+	}
 }
 //obtin pret fara tva
-//$credite = $date_f->credite;
 //echo 'credite > '.$credite.'<br />';
 $fara_tva_tot = $credite/(1.24);
 //echo 'brut > '.$fara_tva_tot.'<br />';
@@ -72,23 +76,23 @@ $totalul = $total_u + $total_tva;
 //echo 'totalul > '.$totalul;
 ?>
 <div style="float:right;margin-bottom:10px;">
-<input type=button onclick="printDiv('printnow')" value="<?php echo JText::_('SAUTO_FACT_TIPARESTE_PROFORMA'); ?>" />
+<input type=button onclick="printDiv('printnow')" value="<?php echo JText::_('SAUTO_FACT_TIPARESTE_FACTURA'); ?>" />
 </div>
 <br /><br />
 <div class="print" id="printnow">
-<table width="100%" class="sa_table_class" cellpadding="0"  cellspacing="0" border="0">
+<table width="100%" class="sa_table_class" cellpadding="0"  cellspacing="0">
 	<tr>
 		<td colspan="3" align="right">
 <?php 
-echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
+echo JText::_('SA_FACT_SERIA').' <strong>'.$serii[1].'</strong> '.JText::_('SA_FACT_NR').' <strong>'.$serii[2].'</strong>';
 ?>
 		</td>
 	</tr>
 	<tr>
 		<td valign="top" width="35%"><?php require("furnizor.php"); furnizor(); ?></td>
 		<td valign="top" align="center">
-			<br /><br />
-			<div class="sa_fact_title"><?php echo JText::_('SAUTO_FACTURA_PROFORMA'); ?></div>
+		<br /><br />
+			<div class="sa_fact_title"><?php echo JText::_('SA_FACT_LINK_FACTURA').'<br />'.$serii[1].' '.$serii[2].' / '.$data[0]; ?></div>
 			<img src="<?php echo $img_path; ?>logo_site.png" width="150" border="0" />
 			<div>
 			<?php $link_site = JUri::base(); ?>
@@ -98,7 +102,7 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 		<td valign="top" width="35%"><?php client($uid); ?></td>
 	</tr>
 	<tr>
-		<td colspan="3" align="center"><?php echo JText::_('SAUTO_FACTURA_PROFORMA').' '.$date_f->serie_prf.' '.JText::_('SA_FACT_DIN_DATA').' '.$data[0]; ?></td>
+		<td colspan="3" align="center"><?php echo JText::_('SA_FACT_FACT_NR').' '.$serii[2].' '.JText::_('SA_FACT_DIN_DATA').' '.$data[0]; ?></td>
 	</tr>	
 	<tr>
 		<td colspan="3">
@@ -116,6 +120,7 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 				<td>1</td>
 				<td>
 					<?php 
+					//denumire factura
 					if ($date_f->tip_plata == 'credit') {
 						echo JText::_('SAUTO_FACT_CUMPARARE_CREDITE');
 					} else {
@@ -126,6 +131,7 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 				<td>buc.</td>
 				<td>
 					<?php
+					//cantitate
 					if ($date_f->tip_plata == 'credit') { 
 						echo $credite; 
 					} else {
@@ -134,6 +140,7 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 				</td>
 				<td>
 					<?php
+					//pret
 					if ($date_f->tip_plata == 'credit') { 
 						echo '1'; 
 					} else {
@@ -153,7 +160,7 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 	</tr>
 	<tr>
 		<td colspan="3">
-			<div style="margin-top:300px;">
+			<div class="print2">
 			<table width="100%">
 				<tr>
 					<td valign="top" width="20%">
@@ -192,6 +199,3 @@ echo JText::_('SA_FACT_SERIA').' <strong>'.$date_f->serie_prf.'</strong>';
 <div style="float:right;margin-top:10px;">
 <a href="<?php echo $link; ?>"><?php echo JText::_('SAUTO_FACT_INAPOI_LA_FACTURI'); ?></a>
 </div>
-<?php 
-}
-?>

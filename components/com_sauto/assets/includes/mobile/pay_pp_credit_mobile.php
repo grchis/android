@@ -1,18 +1,37 @@
+<style type="text/css">
+form {
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+	#gkMainbody table:before {
+    content: "";
+  }
+#gkMainbody table tbody{
+		width:100%!important;
+}
+#gkMainbody table:before {
+    content: "";
+	width:100%;
+	
+  }
+  input[type="text"]{
+	  width:100%;
+  }
+  #submit{
+	  font-size: 100%;
+	  width:80%;
+	  margin-left:10%;
+	  margin-right:10%;
+  }
+</style>
 <?php
-/**
- * @package    sauto
- * @subpackage Views
- * @author     Dacian Strain {@link http://shop.elbase.eu}
- * @author     Created on 17-Nov-2013
- * @license    GNU/GPL
- */
-
-//-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/pay_pp_credit_mobile.php');
-}else{
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
@@ -65,7 +84,8 @@ $url  = 'http://www.bnro.ro/nbrfxrates.xml';
 		$curs_euro = $rates['10']['rate'];
 		//echo '>>>>> '.$curs_euro;
 //
-?>
+require('menu_filter_d.php');
+?><br /><br />
 <div>
 <?php echo JText::_('SA_PLATA_PAYPAL_CREDITE_DESC'); ?>
 </div>
@@ -103,8 +123,17 @@ echo JText::sprintf('SA_PLATA_PAYPAL_CREDITE_DESC3', $all_cr, $curs_euro);
                     <input type='hidden' name='cancel_return' value='<?php echo $baza.$cfg->paypal_cancel; ?>'>
                     <input type='hidden' name='return' value='<?php echo $baza.$cfg->return_url; ?>'>
 					<input type="hidden" name="notify_url" value="<?php echo $baza.$cfg->notify_url; ?>" /> 
-                    <input type="submit" border="0" name="submit" value="<?php echo JText::_('SA_PLATESTE_PRIN_PAYPAL'); ?>">
+                    <input id="submit" type="submit" border="0" name="submit" value="<?php echo JText::_('SA_PLATESTE_PRIN_PAYPAL'); ?>">
                     <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					<input type="hidden" name="custom" value='<?php echo 'credite-pp-'.$uid.'-'.$pret; ?>'><!-- custom field -->
                 </form>
-<?php } ?>
+<script type="text/javascript">
+	document.getElementById('gkTopBar').remove();
+		document.getElementById('side_bar').style.display = "none";
+		document.getElementById('content9').style.all = "none";
+		document.write('<style type="text/css" >#content9{width: 100% !important;' + 
+						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
+						'width: 100% !important;}</style>'
+		);
+	
+</script>

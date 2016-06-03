@@ -10,6 +10,10 @@
 //-- No direct access
 
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/pay_cc_abn_mobile.php');
+}else{
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
@@ -123,3 +127,4 @@ echo JText::sprintf('SA_PLATA_CC_ABONAMENT_DESC2', $pret->abonament, $pret->pret
 	<input type="hidden" name="moneda" value="RON" />
 	<input type="submit" value="<?php echo JText::_('SAUTO_PLATESTE_CU_CC'); ?>">
 	</form>
+<?php } ?>

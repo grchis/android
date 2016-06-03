@@ -7,10 +7,10 @@
 
 #gkMainbody table:before {
     content: "";
-	width:100%;	
+	width:100%;
+	
   }
   #gkMainbody table {
-	 font-size: 80%;
 	 padding: 30px 0 20px 0;
     width: 540px!important;
     display: block!important;
@@ -20,37 +20,29 @@
 </style>
 <?php
 defined('_JEXEC') || die('=;)');
+$document = JFactory::getDocument();
+require("toggle_js_mobile.php");
+$document->addScriptDeclaration ($js_code);
+
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
-
+$img_path = JURI::base()."components/com_sauto/assets/images/";
 $query = "SELECT count(*) FROM #__sa_facturi WHERE `uid` = '".$uid."' ";
 $db->setQuery($query);
 //$db->execute();
 $total = $db->loadResult();
+$width = 'style="width:800px;"';
 if ($total == 0) {
-	//nu sunt facturi emise/generate
-	?>
-	<div class="sa_missing_request_1">
-	<div class="sa_missing_request">
-		<div class="sa_missing_request_left">
-			<?php $link_add = JRoute::_('index.php?option=com_sauto&view=edit_profile&type=fn'); ?>
-			<img src="<?php echo $img_path; ?>icon_no_requests.png" border="0" />
-		</div>
-		<div class="sa_missing_request_right">
-		<?php echo JText::_('SA_MISSING_PAYMENTS').'<br /><a href="'.$link_add.'" class="sa_lk_profile">'.JText::_('SA_DEALER_ADD_NEW_PAYMENT').'</a>'; ?>
-		</div>
-	</div>
-	</div>
-	<div style="clear:both;"></div>
-	<?php
+require("fara_anunturi.php");
 } else {
-	$query = "SELECT `f`.*, `t`.`new_upload` FROM #__sa_facturi AS `f` JOIN #__sa_tranzactii AS `t` ON `f`.`uid` = '".$uid."' AND `f`.`id` = `t`.`tranz_id` ORDER BY `f`.`id` DESC LIMIT 0, 30";
-	$db->setQuery($query);
-	$list = $db->loadObjectList();
-
-	$i=1;
-	?>
+$link = JRoute::_('index.php?option=com_sauto&view=facturi');
+$query = "SELECT `f`.*, `t`.`new_upload` FROM #__sa_facturi AS `f` JOIN #__sa_tranzactii AS `t` ON `f`.`uid` = '".$uid."' AND `f`.`id` = `t`.`tranz_id` ORDER BY `f`.`id` DESC";
+$db->setQuery($query);
+$list = $db->loadObjectList();
+require('menu_filter_d.php');
+$i=1;
+?>
 <table width="100%!important">
 	<tr>
 		<td valign="top" class="sa_table_cell"><?php echo JText::_('SAUTO_FACT_NR_CRT'); ?></td>
@@ -76,8 +68,19 @@ if ($total == 0) {
 		echo '<tr class="sa_table_row '.$style.'">';
 			echo '<td valign="top" class="sa_table_cell">'.$i.'</td>';
 			$data = explode(" ", $l->data_tr);
+			//data tranzactie
 			echo '<td valign="top" class="sa_table_cell">'.$data[0].'</td>';
-			echo '<td valign="top" class="sa_table_cell">'.$l->factura.'</td>';
+			//serie factura/proforma
+			echo '<td valign="top" class="sa_table_cell">';
+				if ($l->prf == 1) {
+					//proforma
+					echo $l->serie_prf;
+				} else {
+					//factura
+					echo $l->factura;
+				}
+				//.$l->factura.
+			echo '</td>';
 			echo '<td valign="top" class="sa_table_cell" valign="top" class="sa_table_cell">';
 				$tip_plata = explode(" - ", $l->factura);
 				if ($tip_plata[0] == 'op') {
@@ -124,11 +127,11 @@ if ($total == 0) {
 					} elseif ($l->original == 1) {
 						echo '<div class="sa_fact_sol">'.JText::_('SAUTO_ORIGINAL_SOLICITAT').'</div>';
 					} else  { 
-						$link = JRoute::_('index.php?option=com_sauto&view=facturi&task=original');
-						echo '<form action="'.$link.'" method="post">';
+						$link_original = JRoute::_('index.php?option=com_sauto&view=facturi&task=original');
+						echo '<form action="'.$link_original.'" method="post">';
 						echo '<input type="checkbox" name="original" value="1" onChange="this.form.submit()" /> '.JText::_('SAUTO_SOLICIT');
 						echo '<input type="hidden" name="id" value="'.$l->id.'" />';
-						echo '<input type="hidden" name="return" value="facturi" />';
+						echo '<input type="hidden" name="return" value="lista" />';
 						echo '</form>';
 					}
 				}
@@ -150,7 +153,7 @@ if ($total == 0) {
 				
 				echo JText::_('SAUTO_FISIER_PLATA').' ';
 				echo '<input type="file" name="image" value="" /> ';
-				echo ' <input type="submit" value="'.JText::_('SAUTO_EFECTUARE_PLATA').'" style="float:right;"/>';
+				echo ' <input type="submit" value="'.JText::_('SAUTO_EFECTUARE_PLATA').'" style="float:right;"/></form>';
 			} else {
 				echo JText::_('SA_FISIER_INCARCAT'); 	
 			} 
@@ -160,6 +163,17 @@ if ($total == 0) {
 		$i++;
 	}
 	?>
-	</table>
-	<?php
+</table>
+<?php	
 }
+?>
+<script type="text/javascript">
+	document.getElementById('gkTopBar').remove();
+		document.getElementById('side_bar').style.display = "none";
+		document.getElementById('content9').style.all = "none";
+		document.write('<style type="text/css" >#content9{width: 100% !important;' + 
+						'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
+						'width: 100% !important;}</style>'
+		);
+	
+</script>

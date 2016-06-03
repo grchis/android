@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/pay_op_credit_mobile.php');
+}else{
 $db = JFactory::getDbo();
 $user =& JFactory::getUser();
 $uid = $user->id;
@@ -82,3 +86,4 @@ $link_form = JRoute::_('index.php?option=com_sauto&view=pay&task=proforma');
 	</tr>
 </table>
 </form>
+<?php } ?>
