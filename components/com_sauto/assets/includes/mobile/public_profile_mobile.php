@@ -23,6 +23,9 @@
 	        padding: 0 !important;
 	    }
 	}
+	#gkMainbody table tbody{
+		width:100%!important;
+}
 #gkMainbody table:before {
     content: "";
   }
@@ -100,40 +103,7 @@ if ($types->tip_cont == 1) {
 	$neu_3 = $db->loadResult();	
 					?>
 <div id="m_visitors">
-		<div class = "m_header" style="width: 100%; height: 100px; background-color: #509EFF">
-		<img id="menu-icon" class="menu-button" src="./components/com_sauto/assets/images/menu-icon.png" />
-	</div>
-	
-	<div id="main-menu" style="display: none;">
-        <div class="menu-option">
-          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_requests.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=requests"> Cereri </span>
-        </div>
-
-        <div class="menu-option">
-          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_my_request.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php/component/sauto/?view=my_request"> Ofertele Mele </span>
-        </div>
-
-        <div class="menu-option">
-          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_final_request.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=final_request"> Oferte Finalizate </span>
-        </div>
-
-        <div class="menu-option">
-          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_alerts.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?view=alerts"> Alerte </span>
-        </div>
-
-        <div class="menu-option">
-          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_edit_profile.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php/component/sauto/?view=edit_profile"> Editare profil </span>
-        </div>
-
-        <div class="menu-option">
-          <img class="menu-option-pic" src="./components/com_sauto/assets/images/icon_logout.png" border="0">
-          <span class="menu-option-text" data-href="/android/index.php?option=com_sauto&amp;view=logout"> Inchide Aplicatia </span>
-        </div>
+		<?php require('menu_filter_d.php'); ?>
       </div>
 	<div id="reprezentant" style="width:100%;"> 
 		<div id="info" style="margin-left:5%;margin-right:5%;">
@@ -355,9 +325,6 @@ if ($tip_cont == 0) { ?>
 	<?php } ?>
 </div>
 <script type="text/javascript">
-		var isMenuCollapsed = true;
-		jQuery('#menu-icon').on('click', toggleMenu);
-		jQuery('.menu-option-text').on('click', redirectToMenuOption);
 		document.getElementById('wrapper9').getElementsByTagName('h1')[0].remove();
 		document.getElementById('gkTopBar').remove();
 		document.getElementById('side_bar').style.display = "none";
@@ -368,21 +335,5 @@ if ($tip_cont == 0) { ?>
 						'#gkMainbody table tbody, #gkMainbody table thead, #gkMainbody table tfoot{ width: 100% !important; }' + 
 						'span{ display: inline-block; width: 45%; } p{ margin-top: 2px; margin-bottom: 2px;}</style>'
 		);
-		function toggleMenu () {
-	   if (isMenuCollapsed){
-	        isMenuCollapsed = false;
-	        jQuery('#main-menu').show(500);
-	    }
-	    else{
-	        isMenuCollapsed = true;
-	        jQuery('#main-menu').hide(500);
-	    }
-		}
-
-	function redirectToMenuOption (event) {
-		event.preventDefault();
-		event.stopPropagation();
-		var url=jQuery(event.target).data("href");
-   		window.location.href = url;
-	}
+		
 </script>
