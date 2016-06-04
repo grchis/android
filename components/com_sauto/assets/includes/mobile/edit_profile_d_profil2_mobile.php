@@ -256,9 +256,7 @@ $profil = $db->loadObject();
 }?>
 </div>
 <script type="text/javascript">
-		var isMenuCollapsed = true;
-		jQuery('#menu-icon').on('click', toggleMenu);
-		jQuery('.menu-option-text').on('click', redirectToMenuOption);
+		
 		document.getElementById('wrapper9').getElementsByTagName('h1')[0].remove();
 		document.getElementById('gkTopBar').remove();
 		document.getElementById('side_bar').style.display = "none";
@@ -269,21 +267,5 @@ $profil = $db->loadObject();
 						'#gkMainbody table tbody, #gkMainbody table thead, #gkMainbody table tfoot{ width: 100% !important; }' + 
 						'span{ display: inline-block; width: 45%; } p{ margin-top: 2px; margin-bottom: 2px;}</style>'
 		);
-		function toggleMenu () {
-	   if (isMenuCollapsed){
-	        isMenuCollapsed = false;
-	        jQuery('#main-menu').show(500);
-	    }
-	    else{
-	        isMenuCollapsed = true;
-	        jQuery('#main-menu').hide(500);
-	    }
-		}
-
-	function redirectToMenuOption (event) {
-		event.preventDefault();
-		event.stopPropagation();
-		var url=jQuery(event.target).data("href");
-   		window.location.href = url;
-	}
+		
 </script>

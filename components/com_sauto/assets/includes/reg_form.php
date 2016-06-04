@@ -9,6 +9,10 @@
 
 //-- No direct access
 defined('_JEXEC') || die('=;)');
+$useragent=$_SERVER['HTTP_USER_AGENT'];
+if(strpos($useragent,'Mobile')){
+require_once('/mobile/reg_form_mobile.php');
+}else{
 $document = JFactory::getDocument ();
 $img_path = JURI::base()."components/com_sauto/assets/images/";
 
@@ -74,17 +78,4 @@ $document->addScript($jslink);
    <?php require("register_customer.php"); ?>
   </div>
 </div>
-
-<script>
-	window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')
-	var isMobile = navigator.userAgent.contains('Mobile');
-	if (!isMobile) {
-		document.getElementById('m_visitors').remove();
-	} else {
-		document.getElementById('gkTopBar').remove();
-		document.getElementById('side_bar').remove();
-		document.getElementsByTagName('h1')[0].remove();
-		document.getElementsByName('t1')[0].text = Client;
-		document.getElementsByName('t2')[0].text = firma;
-	}
-</script>
+<?php } ?>

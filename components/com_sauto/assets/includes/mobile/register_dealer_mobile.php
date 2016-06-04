@@ -1,28 +1,31 @@
+<style type="text/css">
+.sauto_main_left{
+	width:100%;
+	float:none!important;
+}
+form {
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+	@media screen and (max-width: 100%){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+</style>
 <?php
-/**
- * @package    sauto
- * @subpackage Views
- * @author     Dacian Strain {@link http://shop.elbase.eu}
- * @author     Created on 17-Nov-2013
- * @license    GNU/GPL
- */
-
-//-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/register_dealer_mobile.php');
-}else{
 $link_redirect = JUri::base().'components/com_sauto/assets/ajax/orase.php';
 $document = JFactory::getDocument ();
 
-require("javascript2.php");
+require("javascript2_mobile.php");
 $document->addScriptDeclaration ($js_code2);
 
-require("verific_email2.php");
+require("verific_email2_mobile.php");
 $document->addScriptDeclaration ($js_code_email);
 
-require("cod_fiscal.php");
+require("cod_fiscal_mobile.php");
 $document->addScriptDeclaration ($js_code5);
 
 $db = JFactory::getDbo();
@@ -118,9 +121,6 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 	<?php echo 
 	JHtml::_( 'form.token' ); 
 	?>
-<table class="sa_table_class" width="100%">
-	<tr class="sa_table_row">
-		<td class="sa_table_cell" valign="top" width="50%">
 			<div class="sauto_form_label">
 				<?php echo JText::_('SAUTO_FORM_REPREZ_NAME'); ?>
 				<?php echo ' <span class="sa_obligatoriu">'.JText::_('SA_ASTERISC').'</span>'; ?>
@@ -202,10 +202,7 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			<?php $link_form2 = JRoute::_('index.php?option=com_sauto&view=process&task=precompletare'); ?>
 			<input type="submit" value="<?php echo JText::_('SAUTO_FORM_PRECOMPLETARE_ACUM'); ?>" class="sauto_button " onclick="reg_form.action='<?php echo $link_form2; ?>'; return true;" />
 			</div>
-			<?php /*<div class="sa_table_cell sa_phone sa_add_comment sa_cursor sa_hover">	
-			<?php echo JText::_('SAUTO_FORM_PRECOMPLETARE_ACUM'); ?>
-			</div>*/ ?>
-			<br /><br />
+		<br /><br />
 			
 			<div class="sauto_form_label">
 				<?php echo JText::_('SAUTO_FORM_COMPANY_NAME'); ?>
@@ -214,9 +211,7 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			
 			<div>
 				
-			<input type="text" name="company_name" value="<?php echo $company_name; ?>" class="sa_inputbox" 
-				<?php //if ($pr_en == 1) { echo ' disabled '; } ?>
-			/>
+			<input type="text" name="company_name" value="<?php echo $company_name; ?>" class="sa_inputbox" />
 			</div>
 			
 			
@@ -227,9 +222,7 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			
 			<div>
 				
-			<input type="text" name="nr_reg" value="<?php echo $nr_reg; ?>" class="sa_inputbox" 
-				<?php //if ($pr_en == 1) { echo ' disabled '; } ?>
-			/>
+			<input type="text" name="nr_reg" value="<?php echo $nr_reg; ?>" class="sa_inputbox" />
 			</div>
 			
 			<div class="sauto_form_label">
@@ -239,9 +232,7 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			
 			<div>
 				
-			<select name="judet" onChange="javascript:aratOraseD(this.value)" class="sa_select"
-				<?php //if ($pr_en == 1) { echo ' disabled '; } ?>
-			>
+			<select name="judet" onChange="javascript:aratOraseD(this.value)" class="sa_select">
 				<option value=""><?php echo JText::_('SAUTO_FORM_SELECT_REGION'); ?></option>
 						<?php
 						
@@ -263,9 +254,7 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			</div>
 			
 			<div id="sa_city_d">
-				<select name="localitate" class="sa_select"
-				<?php //if ($pr_en == 1) { echo ' disabled '; } ?>
-				>
+				<select name="localitate" class="sa_select">
 				<option value=""><?php echo JText::_('SAUTO_FORM_SELECT_CITY'); ?></option>
 				<?php
 				$query = "SELECT * FROM #__sa_localitati WHERE `jid` = '".$judet."'  AND `published` = '1' ORDER BY `localitate` ASC";
@@ -291,22 +280,10 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			
 			<div class="sauto_form_label">
 				<?php echo JText::_('SAUTO_FORM_SEDIU'); ?>
-				<?php echo ' <span class="sa_obligatoriu">'.JText::_('SA_ASTERISC').'</span>'; ?>
-			</div>
-			
-			<div>
-			<?php
-			$editor =& JFactory::getEditor();
-			$params = array( 'smilies'=> '0' ,
-                 'style'  => '1' ,  
-                 'layer'  => '0' , 
-                 'table'  => '0' ,
-                 'clear_entities'=>'0'
-                 );
-			echo $editor->display( 'sediu', $sediu, '500', '150', '20', '20', false, $params );
-			?>
-			</div>
-			
+				<textarea name="sediu" id="Array" cols="20" rows="20" style="width: 500px; height: 150px;"
+				class="mce_editable" aria-hidden="true" aria-invalid="false">	
+			</textarea>
+			</div>		
 			<div class="sauto_form_label">
 				<?php echo JText::_('SAUTO_FORM_PHONE'); ?>
 				<?php echo ' <span class="sa_obligatoriu">'.JText::_('SA_ASTERISC').'</span>'; ?>
@@ -319,26 +296,18 @@ $img_path = JURI::base()."components/com_sauto/assets/images/";
 			</div>
 			
 			<div>
-				<input type="text" name="cp" value="<?php echo $cp; ?>" class=" sa_inputbox" 
-					<?php //if ($pr_en == 1) { echo ' disabled '; } ?>
-				/>
+				<input type="text" name="cp" value="<?php echo $cp; ?>" class=" sa_inputbox" />
 			</div>
-		</td>
-		<td class="sa_table_cell" valign="top">
+		<p>
 			<?php echo $login_article; ?>
-		</td>
-	</tr>
-	<tr class="sa_table_row">
-		<td class="sa_table_cell" valign="top" colspan="2">
-			<div class="sauto_form_label">
+		</p>
+		<div class="sauto_form_label">
 				<?php echo JText::_('SAUTO_ABONAMENTUL_DORIT'); ?>	
 			</div>
 			
 			<div>
-			<table class="sa_table_class">
-				<tr class="sa_table_row">
-				<?php
-$query = "SELECT `a`.`id`, `a`.`abonament`, `a`.`pret`, `m`.`m_scurt` FROM #__sa_abonament AS `a` JOIN #__sa_moneda AS `m` 
+<?php
+	$query = "SELECT `a`.`id`, `a`.`abonament`, `a`.`pret`, `m`.`m_scurt` FROM #__sa_abonament AS `a` JOIN #__sa_moneda AS `m` 
 		ON `a`.`moneda` = `m`.`id`";
 $db->setQuery($query);
 $abn = $db->loadObjectList();
@@ -361,15 +330,9 @@ $abn = $db->loadObjectList();
 						$imagine_abn = 'ab_kerosen.png';
 					}
 					?>
-					<td class="sa_table_cell" valign="top" width="28%">
-<div class="sa_abn_border">					
-<table class="sa_table_class" >
-	<tr class="sa_table_row">
-		<td class="sa_table_cell" valign="top" width="35%">
+<div class="sa_abn_border">		
 			<img src="<?php echo $img_path.$imagine_abn; ?>" />
-		</td>
-		<td class="sa_table_cell" valign="top">
-			<br />
+	<br />
 			<?php
 			for ($i=1;$i<5;$i++) {
 				if (($i==1) or ($i==2)) {
@@ -391,30 +354,15 @@ $abn = $db->loadObjectList();
 			<?php
 			}
 			?>
-		</td>
-	</tr>
-	<tr class="sa_table_row">
-		<td class="sa_table_cell" colspan="2" align="center">
-			<input type="radio" name="abonament_value" value="<?php echo $a->id; ?>" 
+<input type="radio" name="abonament_value" value="<?php echo $a->id; ?>" 
 			<?php if ($a->id == 1) { echo ' checked '; } ?>
 			/>
 			<span class="sa_reg_abon"><?php echo JText::_('SAUTO_SELECT_ABONAMENT_BUTTON'); ?></span>		
-		</td>
-	</tr>
-</table>
 </div>					
-					</td>
 					<?php
 				}
 				?>
-				</tr>
-			</table>
 			</div>
-		</td>
-	</tr>
-	<tr>
-		<td class="sa_table_cell" valign="top">
-			
 			<div class="sauto_form_label sa_obligatoriu">
 				<?php echo JText::_('SAUTO_CAMPURI_OBLIGATORII'); ?>
 			</div>
@@ -437,16 +385,12 @@ $abn = $db->loadObjectList();
 			
 			<input type="submit" value="<?php echo JText::_('SAUTO_FORM_REGISTER_BUTTON'); ?>" class="sauto_button validate" onclick="this.form;return true;" />
 			</div>
-
-		
-		</td>
-		<td class="sa_table_cell" valign="top">
-		<?php //zona 2 ?>
-		</td>
-	</tr>
-</table>
 </form>
-<?php 
-}
-?>
+<script>
+		document.getElementById('gkTopBar').remove();
+		document.getElementById('side_bar').remove();
+		document.getElementsByTagName('h1')[0].remove();
+		document.getElementsByName('t1')[0].text = Client;
+		document.getElementsByName('t2')[0].text = firma;
+</script>
 

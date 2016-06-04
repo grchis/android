@@ -28,7 +28,8 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile');
  <div id="m_visitors">
       <div class = "m_header">
           <img id="filter-button" class="menu-button" style="right: 80px;"src="<?php echo $img_path?>filter-icon.png" />
-          <img id="menu-icon" class="menu-button" src="<?php echo $img_path?>menu-icon.png" />
+		  	<a href="./android/index.php"><img src="./components/com_sauto/assets/images/menu_logo.png"/></a>
+	        <img id="menu-icon" class="menu-button" src="<?php echo $img_path?>menu-icon.png" />
       </div>
 
       <div id="main-menu" style="display: none;">
@@ -98,7 +99,7 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile');
 
 <script type="text/javascript">
     var isFilterCollapsed = true;
-    var isMenuCollapsed = true;
+	var isMenuCollapsed = true;
 
     if (document.getElementsByTagName('h1')[0])
     {
@@ -129,14 +130,23 @@ $link = JRoute::_('index.php?option=com_sauto&view=edit_profile');
                     'padding: 0 !important;margin: 0 !important;}#wrapper9{' +
                     'width: 100% !important;}</style>'
     );
+	function toggleMenu () {
+	   if (isMenuCollapsed){
+	        isMenuCollapsed = false;
+	        jQuery('#main-menu').show(500);
+	    }
+	    else{
+	        isMenuCollapsed = true;
+	        jQuery('#main-menu').hide(500);
+	    }
+		}
 
-function redirectToMenuOption (event) {
-  event.preventDefault();
-  event.stopPropagation();
-
-  window.location.href = jQuery(event).data('href');
-}
-
+	function redirectToMenuOption (event) {
+		event.preventDefault();
+		event.stopPropagation();
+		var url=jQuery(event.target).data("href");
+   		window.location.href = url;
+	}
 function reloadRequiredModule () {
   jQuery('.filter-category-option').removeClass('selected');
   jQuery(this).addClass('selected');

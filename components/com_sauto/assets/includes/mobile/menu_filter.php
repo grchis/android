@@ -1,4 +1,5 @@
 	<div class = "m_header" style="width: 100%; height: 100px; background-color: #509EFF">
+		<a href="./android/index.php"><img src="./components/com_sauto/assets/images/menu_logo.png"/></a>
 		<img id="menu-icon" class="menu-button" src="./components/com_sauto/assets/images/menu-icon.png" />
 	</div>
 

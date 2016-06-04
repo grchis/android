@@ -249,9 +249,7 @@ $data_exp = date('Y-m-d', $data_exp);
 </div>
 
 <script type="text/javascript">
-	    var isCollapsed = true;
-
-	    if (document.getElementsByTagName('h1')[0])
+  if (document.getElementsByTagName('h1')[0])
 	    {
 	        document.getElementsByTagName('h1')[0].remove();
 	    }

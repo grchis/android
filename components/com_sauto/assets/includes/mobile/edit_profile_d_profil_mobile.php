@@ -358,7 +358,8 @@ $link_alerts_enable = JRoute::_('index.php?option=com_sauto&view=edit_profile&ta
         <input type="text" name="email" value="<?php echo $profil->nr_registru; ?>" class="input-field" readonly/>
 
         <p class="field-name"><?php echo JText::_('SAUTO_FORM_SEDIU'); ?></p>
-        <textarea name="sediu" id="sediu" cols="60" rows="20" style="width: 100%; height: 150px;" >
+        <textarea name="sediu" id="sediu" cols="60" rows="20"  style="width: 100%; height: 150px;" >
+		<?php echo $profil->sediu ?>
         </textarea>
 
         <?php

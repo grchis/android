@@ -1,28 +1,31 @@
+<style type="text/css">
+.sauto_main_left{
+	width:100%;
+	float:none!important;
+}
+form {
+    margin: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+	@media screen and (max-width: 1210px){
+	    .gkPage {
+	        padding: 0 !important;
+	    }
+	}
+</style>
 <?php
-/**
- * @package    sauto
- * @subpackage Views
- * @author     Dacian Strain {@link http://shop.elbase.eu}
- * @author     Created on 17-Nov-2013
- * @license    GNU/GPL
- */
-
-//-- No direct access
 defined('_JEXEC') || die('=;)');
-$useragent=$_SERVER['HTTP_USER_AGENT'];
-if(strpos($useragent,'Mobile')){
-require_once('/mobile/register_customer_mobile.php');
-}else{
 $link_redirect = JUri::base().'components/com_sauto/assets/ajax/orase.php';
 $document = JFactory::getDocument ();
 
-require("javascript.php");
+require("javascript_mobile.php");
 $document->addScriptDeclaration ($js_code2);
 
-require("register_form.php");
+require("register_form_mobile.php");
 $document->addScriptDeclaration ($js_code);
 
-require("verific_email.php");
+require("verific_email_mobile.php");
 $document->addScriptDeclaration ($js_code_email);
 
 $db = JFactory::getDbo();
@@ -182,4 +185,10 @@ if ($phone != '') {
 <div style="clear:both;"></div>
 
 <br /><br />
-<?php } ?>
+<script>
+		document.getElementById('gkTopBar').remove();
+		document.getElementById('side_bar').remove();
+		document.getElementsByTagName('h1')[0].remove();
+		document.getElementsByName('t1')[0].text = Client;
+		document.getElementsByName('t2')[0].text = firma;
+</script>
